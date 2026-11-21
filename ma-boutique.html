@@ -17,7 +17,7 @@
   const res=await client.from('shops').select('*').eq('owner_id',user.id).order('created_at',{ascending:false}).limit(1).maybeSingle();
   if(res.error||!res.data){$('emptyNote').textContent='Aucune boutique trouvée sur ce compte.';return;}shop=res.data;
  }
- const profile=await client.from('profiles').select('phone').eq('id',shop.owner_id).maybeSingle();const phone=profile.data?.phone||'';document.title=shop.name+' — HaitiBoutik';$('name').textContent=shop.name;$('description').textContent=shop.description||'Bienvenue dans notre boutique.';$('category').textContent=shop.category||'Boutique';$('city').textContent=shop.city||'';$('contact').textContent='Contact : '+phone;
+ const phone=shop.contact_phone||'';document.title=shop.name+' — HaitiBoutik';$('name').textContent=shop.name;$('description').textContent=shop.description||'Bienvenue dans notre boutique.';$('category').textContent=shop.category||'Boutique';$('city').textContent=shop.city||'';$('contact').textContent='Contact : '+phone;
  const color=shop.theme_color||'#f17b5f';document.querySelector('.hero').style.background='linear-gradient(120deg,'+color+',#c94b3b)';
  const num=(shop.phone||'').replace(/\D/g,'');if(num.length>=8)$('whatsapp').href='https://wa.me/'+num;else $('whatsapp').style.display='none';
  $('whatsapp').textContent='Contacter le vendeur';const edit=document.querySelector('.actions a[href="./creer-boutique.html"]');if(edit)edit.href='./espace-marchand.html';
