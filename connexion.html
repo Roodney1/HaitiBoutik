@@ -1,2 +1,37 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101010"><title>Connexion — HaitiBoutik</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#101010;color:#fff;font:15px system-ui;padding:18px}.card{width:min(440px,100%);background:#1b1b1b;border:1px solid #333;border-radius:18px;padding:26px}.brand{font-size:23px;font-weight:850}.brand span{color:#ff8a35}p{color:#aaa;line-height:1.5}label{display:block;margin:16px 0 6px}input{width:100%;padding:13px;border-radius:9px;border:1px solid #444;background:#111;color:white}button{width:100%;padding:13px;margin-top:18px;border:0;border-radius:9px;background:#ff8a35;font-weight:800}.warn{font-size:12px;color:#ffc28e;border-top:1px solid #333;padding-top:14px}</style></head><body><main class="card"><a href="index.html" class="brand" style="color:white;text-decoration:none">Haiti<span>Boutik</span></a><h1>Connexion marchand</h1><p>Accédez à votre espace pour gérer votre boutique.</p><form id="form"><label for="email">Adresse e-mail</label><input id="email" type="email" required placeholder="vous@exemple.com"><label for="password">Mot de passe</label><input id="password" type="password" required minlength="8" placeholder="8 caractères minimum"><button type="submit">Se connecter</button></form><p style="font-size:13px">Vous n’avez pas encore de boutique ? <a href="creer-boutique.html" style="color:#ffad8e">Créer ma boutique</a></p><p class="warn">Écran de démonstration : l'authentification sécurisée n'est pas encore branchée. N'utilisez pas votre vrai mot de passe ici. Supabase Auth devra être configuré avant toute utilisation réelle.</p></main><script>document.querySelector("#form").addEventListener("submit",e=>{e.preventDefault();alert("Connexion indisponible dans cette version de démonstration.")})</script></body></html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101010"><title>Connexion — HaitiBoutik</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#101010;color:#fff;font:15px system-ui;padding:18px}.card{width:min(440px,100%);background:#1b1b1b;border:1px solid #333;border-radius:18px;padding:26px}.brand{font-size:23px;font-weight:850}.brand span{color:#ff8a35}p{color:#aaa;line-height:1.5}label{display:block;margin:16px 0 6px}input{width:100%;padding:13px;border-radius:9px;border:1px solid #444;background:#111;color:white}button{width:100%;padding:13px;margin-top:18px;border:0;border-radius:9px;background:#ff8a35;font-weight:800}.warn{font-size:12px;color:#ffc28e;border-top:1px solid #333;padding-top:14px}
+/* HAITIBOUTIK GLOBAL THEME 5 — Noir Premium & Turquoise */
+:root{color-scheme:dark;--bg:#0b1114;--panel:#111b20;--panel2:#172329;--line:#26383e;--text:#edf7f6;--muted:#9bb0b2;--accent:#16c7b0;--accent2:#50e0cf;--green:#16c7b0}
+html{scroll-behavior:auto!important;background:#0b1114!important;scroll-padding-top:14px}
+body{background:#0b1114!important;color:#edf7f6!important}
+header,.top,.topbar,.navbar,.site-header{background:#101a1e!important;border-color:#26383e!important;color:#edf7f6!important}
+main,.main,.content{color:#edf7f6!important}
+h1,h2,h3,h4,strong,b,label{color:#edf7f6}
+p,small,.muted,.subtitle,.description{color:#a9bcbd}
+.card,.panel,.metric,.stat,.stat-card,.product-card,.auth-card,.form-card,.step-card,.summary,.notice,.admin-card,.delivery-card,.feature-card,.info-card,article{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
+.hero,.hero-card,.banner,.highlight{background:linear-gradient(125deg,#123b39,#10272a)!important;color:#f2fbfa!important;border:1px solid #1e5a54!important;box-shadow:none!important}
+.hero h1,.hero h2,.hero h3,.hero p,.hero-card h1,.hero-card h2,.hero-card p,.banner h1,.banner p{color:#f2fbfa!important}
+button,.button,.btn,a.button,.cta{background:#16c7b0!important;color:#06201d!important;border:1px solid #16c7b0!important;box-shadow:none!important}
+button:hover,.button:hover,.btn:hover,a.button:hover,.cta:hover{background:#50e0cf!important;color:#06201d!important}
+a{color:#50e0cf}
+input,select,textarea{background:#142126!important;color:#edf7f6!important;border:1px solid #345057!important}
+input::placeholder,textarea::placeholder{color:#82999b!important}
+hr{border-color:#26383e!important}
+.badge,.tag,.pill{background:#173c39!important;color:#5ce6d5!important}
+nav a:not(.button){color:#a9dcd6!important}
+footer{color:#9bb0b2!important;border-color:#26383e!important}
+img{max-width:100%}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style></head><body><main class="card"><a href="index.html" class="brand" style="color:white;text-decoration:none">Haiti<span>Boutik</span></a><h1>Connexion marchand</h1><p>Accédez à votre espace pour gérer votre boutique.</p><form id="form"><label for="email">Adresse e-mail</label><input id="email" type="email" required placeholder="vous@exemple.com"><label for="password">Mot de passe</label><input id="password" type="password" required minlength="8" placeholder="8 caractères minimum"><button type="submit">Se connecter</button></form><p style="font-size:13px">Vous n’avez pas encore de boutique ? <a href="creer-boutique.html" style="color:#ffad8e">Créer ma boutique</a></p><p class="warn">Écran de démonstration : l'authentification sécurisée n'est pas encore branchée. N'utilisez pas votre vrai mot de passe ici. Supabase Auth devra être configuré avant toute utilisation réelle.</p></main><script>document.querySelector("#form").addEventListener("submit",e=>{e.preventDefault();alert("Connexion indisponible dans cette version de démonstration.")})</script>
+<script>
+/* HAITIBOUTIK_NAV_SCROLL_V1 — navigation fluide sans animation lourde */
+document.addEventListener("click",function(event){
+ const link=event.target.closest('a[href^="#"]');
+ if(!link)return;
+ const id=link.getAttribute("href").slice(1);
+ if(!id)return;
+ const target=document.getElementById(decodeURIComponent(id));
+ if(target){event.preventDefault();target.scrollIntoView({behavior:"auto",block:"start"});}
+});
+</script>
+</body></html>
