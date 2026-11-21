@@ -215,7 +215,7 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { wind
   const nameInput=$('shopName');if(nameInput)nameInput.value=shop.name||'';
   const phoneInput=$('shopPhone');if(phoneInput)phoneInput.value=shop.contact_phone||user.user_metadata?.phone||'';
   if(shop.status!=='active')notify('Votre boutique est enregistrée. Activation requise : 750 GDS (paiement à valider).');
-  await loadProducts();
+  await loadSupplierOptions();await loadProducts();await loadOrders();
  }
  async function loadOrders(){
   const {data,error}=await client.from('orders').select('id,customer_name,customer_phone,delivery_address,status,total_gds,created_at').eq('shop_id',shop.id).order('created_at',{ascending:false});
