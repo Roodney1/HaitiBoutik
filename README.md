@@ -11,15 +11,15 @@ Plateforme en construction pour permettre aux commerçants en Haïti de créer e
 
 ## Fichiers
 - `index.html` : page d’accueil en français qui présente HaitiBoutik et guide les visiteurs vers la création de leur boutique.
-- `creer-boutique.html` : assistant de création en trois étapes.
+- `creer-boutique.html` : assistant de création en trois étapes ; enregistre la boutique dans Supabase après connexion.
 - `ma-boutique.html` : aperçu local de la vitrine personnalisée.
-- `espace-marchand.html` : tableau de bord marchand et gestion locale des produits.
+- `espace-marchand.html` : tableau de bord marchand connecté à Supabase pour charger et gérer les produits de sa boutique.
 - `boutique.html` : catalogue de démonstration avec 30 fiches produits, photos, recherche, filtres, tri et panier local.
-- `connexion.html` : maquette de connexion (aucune authentification active).
+- `connexion.html` : inscription et connexion des marchands avec Supabase Auth.
 - `admin.html` : aperçu du centre d'administration (maquette non sécurisée).
 - `livraison.html` : aperçu des règles de livraison.
 - `fournisseurs.html` : présentation du portail fournisseur et de l’expédition directe au client.
-- `supabase/migrations/20261121_supplier_fulfillment.sql` : modèle initial des fournisseurs, de leur catalogue et des commandes à expédier directement.
+- `supabase/migrations/` : migrations déployées pour le schéma, le portail fournisseur, les règles RLS et les droits de modification des boutiques.
 - `manifest.webmanifest`, `sw.js`, `assets/icon.svg` : installation comme application web et cache hors ligne de base.
 - `supabase/schema.sql` : structure initiale SQL et politiques RLS.
 - `supabase-client.js` : client navigateur Supabase configuré avec l'URL du projet et une clé publishable uniquement (aucune clé secrète).
@@ -29,7 +29,7 @@ Plateforme en construction pour permettre aux commerçants en Haïti de créer e
 - `docs/INTEGRATIONS-A-FAIRE.md` : prérequis MonCash, NatCash et livraison.
 
 ## Important — état réel
-Le projet Supabase HaitiBoutik est maintenant créé et les tables principales, les politiques RLS, les profils automatiques et les migrations de fournisseurs sont installés. Le client navigateur public est configuré. Le dépôt reste toutefois un prototype de développement, pas une plateforme de commerce prête pour la production. Les produits, commandes et historiques de démonstration ne sont pas des données réelles. Les indicateurs du tableau de bord sont remis à zéro. Le parcours de création enregistre une préconfiguration locale dans le navigateur ; il ne crée pas encore de compte serveur, de boutique multi-utilisateur ou d’URL publique unique. La vitrine personnalisée lit ces données sur le même appareil. Les formulaires de connexion ne créent pas encore de comptes, le panier ne passe pas de commande et aucun paiement MonCash/NatCash n'est connecté. La gestion des produits du tableau de bord est locale au navigateur (ajout, modification et suppression) et ne synchronise rien entre appareils. Les politiques SQL protègent les données, mais les pages de connexion, création de boutique, gestion des produits et passage de commande doivent encore être reliées au client Supabase. Des fonctions serveur sécurisées restent nécessaires pour créer les commandes, attribuer les tâches aux fournisseurs et valider les paiements. Le mode hors ligne ne synchronise pas les données : il met seulement en cache les pages statiques.
+Le projet Supabase HaitiBoutik est créé et actif. Les tables principales, les politiques RLS, les profils automatiques et les migrations fournisseurs sont installés. L'inscription/connexion marchands, la création réelle de boutique et la gestion des produits sont maintenant reliées à Supabase. Le dépôt reste en développement et n'est pas prêt pour le commerce en production : le parcours de commande, le paiement, l'activation automatisée à 750 GDS, l'attribution des commandes aux fournisseurs, les notifications et le suivi réel de livraison ne sont pas encore opérationnels. Les fournisseurs doivent être recrutés et vérifiés avant toute promesse de livraison. Les images du catalogue de démonstration doivent aussi être vérifiées pour leurs droits d'utilisation. Le mode hors ligne ne synchronise pas les données : il met seulement en cache les pages statiques.
 
 Ne publiez pas de clés secrètes, PIN, OTP ou mots de passe dans le dépôt. Les intégrations de paiement nécessitent des accès marchands et une validation officielle.
 
