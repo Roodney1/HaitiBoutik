@@ -10,7 +10,7 @@ Plateforme en construction pour permettre aux commerçants en Haïti de créer e
 - Le marchand prend en charge les frais de livraison.
 
 ## Fichiers
-- `index.html` : tableau de bord marchand (prototype visuel).
+- `index.html` : tableau de bord marchand responsive avec navigation par sections, gestion locale des produits (ajout, modification, suppression, prix, stock, photo et description) et paramètres locaux.
 - `boutique.html` : catalogue de démonstration avec 30 fiches produits, photos, recherche, filtres, tri et panier local.
 - `connexion.html` : maquette de connexion (aucune authentification active).
 - `admin.html` : aperçu du centre d'administration (maquette non sécurisée).
