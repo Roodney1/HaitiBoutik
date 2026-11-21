@@ -3,28 +3,6 @@
 <style>
 :root{--bg:#171311;--panel:#241e1a;--line:#44352d;--text:#fff7f1;--muted:#b9aaa0;--orange:#f06b4f;--green:#65c99a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#39231c,#171311 55%);color:var(--text);font:14px Arial,sans-serif}.wrap{max-width:1150px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{font-size:21px;font-weight:800}.brand span{color:var(--orange)}.muted{color:var(--muted)}.pill{border:1px solid #77503e;border-radius:30px;padding:7px 11px;color:#ffc2a8;font-size:11px}.intro{margin:28px 0 18px}.intro h1{font-size:26px;margin:0 0 7px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card,.panel{background:linear-gradient(145deg,#2b2420,#211b18);border:1px solid var(--line);border-radius:13px;padding:17px}.card small{color:var(--muted)}.card strong{display:block;font-size:26px;margin:10px 0 4px}.zero{color:#ffc09e}.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:13px;margin-top:14px}.panel h2{font-size:15px;margin:0 0 13px}.item{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line);padding:12px 0;font-size:12px}.btn{border:0;border-radius:8px;padding:9px 12px;background:var(--orange);color:#27130e;font-weight:700;cursor:pointer}.btn.secondary{background:#382b24;color:#fce8dd;border:1px solid #594238}.notice{background:#33251e;border:1px solid #72503c;color:#f7c9ae;border-radius:10px;padding:12px;font-size:12px;line-height:1.6;margin-top:16px}.links{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.links a{color:#ffc09e;text-decoration:none;font-size:12px}@media(max-width:750px){.grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}.wrap{padding:16px}.intro h1{font-size:22px}}
 
-/* HAITIBOUTIK GLOBAL THEME 5 — Noir Premium & Turquoise */
-:root{color-scheme:dark;--bg:#0b1114;--panel:#111b20;--panel2:#172329;--line:#26383e;--text:#edf7f6;--muted:#9bb0b2;--accent:#16c7b0;--accent2:#50e0cf;--green:#16c7b0}
-html{scroll-behavior:auto!important;background:#0b1114!important;scroll-padding-top:14px}
-body{background:#0b1114!important;color:#edf7f6!important}
-header,.top,.topbar,.navbar,.site-header{background:#101a1e!important;border-color:#26383e!important;color:#edf7f6!important}
-main,.main,.content{color:#edf7f6!important}
-h1,h2,h3,h4,strong,b,label{color:#edf7f6}
-p,small,.muted,.subtitle,.description{color:#a9bcbd}
-.card,.panel,.metric,.stat,.stat-card,.product-card,.auth-card,.form-card,.step-card,.summary,.notice,.admin-card,.delivery-card,.feature-card,.info-card,article{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
-.hero,.hero-card,.banner,.highlight{background:linear-gradient(125deg,#123b39,#10272a)!important;color:#f2fbfa!important;border:1px solid #1e5a54!important;box-shadow:none!important}
-.hero h1,.hero h2,.hero h3,.hero p,.hero-card h1,.hero-card h2,.hero-card p,.banner h1,.banner p{color:#f2fbfa!important}
-button,.button,.btn,a.button,.cta{background:#16c7b0!important;color:#06201d!important;border:1px solid #16c7b0!important;box-shadow:none!important}
-button:hover,.button:hover,.btn:hover,a.button:hover,.cta:hover{background:#50e0cf!important;color:#06201d!important}
-a{color:#50e0cf}
-input,select,textarea{background:#142126!important;color:#edf7f6!important;border:1px solid #345057!important}
-input::placeholder,textarea::placeholder{color:#82999b!important}
-hr{border-color:#26383e!important}
-.badge,.tag,.pill{background:#173c39!important;color:#5ce6d5!important}
-nav a:not(.button){color:#a9dcd6!important}
-footer{color:#9bb0b2!important;border-color:#26383e!important}
-img{max-width:100%}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style></head><body><main class="wrap"><header class="top"><div class="brand">Haiti<span>Boutik</span> <small class="muted">/ Administration</small></div><span class="pill">MODE DÉMONSTRATION</span></header>
 <section class="intro"><h1>Centre de contrôle</h1><div class="muted">Vue générale de la plateforme — les chiffres affichés sont des données réelles du prototype, pas des statistiques commerciales.</div></section>
 <section class="grid"><article class="card"><small>Boutiques enregistrées</small><strong class="zero">0</strong><small>Aucune boutique réelle connectée</small></article><article class="card"><small>Boutiques à vérifier</small><strong class="zero">0</strong><small>Demandes en attente</small></article><article class="card"><small>Paiements confirmés</small><strong class="zero">0 GDS</strong><small>Aucun paiement connecté</small></article><article class="card"><small>Commandes totales</small><strong class="zero">0</strong><small>Aucune commande réelle</small></article></section>
@@ -32,15 +10,5 @@ img{max-width:100%}
 <article class="panel"><h2>Actions administrateur</h2><div class="item"><span>Examiner les boutiques</span><button class="btn secondary" onclick="alert('La gestion réelle des boutiques sera activée après connexion à la base de données.')">Ouvrir</button></div><div class="item"><span>Consulter les paiements</span><button class="btn secondary" onclick="alert('Aucun fournisseur de paiement n’est encore connecté.')">Ouvrir</button></div><div class="item"><span>Paramètres plateforme</span><button class="btn secondary" onclick="alert('Les paramètres serveur seront configurés dans la prochaine étape.')">Ouvrir</button></div></article></section>
 <div class="notice"><b>Important :</b> cette page est une maquette d'interface. Elle ne possède pas encore de connexion administrateur sécurisée. Ne l'utilisez pas pour accepter des paiements ou gérer de vrais comptes. Un vrai panneau admin devra être protégé par authentification et droits d'accès côté serveur.</div>
 <nav class="links"><a href="index.html">← Espace marchand</a><a href="boutique.html">Vitrine boutique</a><a href="livraison.html">Gestion des livraisons →</a></nav></main>
-<script>
-/* HAITIBOUTIK_NAV_SCROLL_V1 — navigation fluide sans animation lourde */
-document.addEventListener("click",function(event){
- const link=event.target.closest('a[href^="#"]');
- if(!link)return;
- const id=link.getAttribute("href").slice(1);
- if(!id)return;
- const target=document.getElementById(decodeURIComponent(id));
- if(target){event.preventDefault();target.scrollIntoView({behavior:"auto",block:"start"});}
-});
-</script>
+
 </body></html>
