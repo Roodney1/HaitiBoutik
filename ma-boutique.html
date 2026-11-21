@@ -2,6 +2,29 @@
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171311"><title>Ma boutique — HaitiBoutik</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f5eee8;color:#30231d;font:14px Arial,sans-serif}.top{background:#201815;color:white;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:20px;font-weight:900}.brand span{color:#f28b6e}.top a{color:#ffd0bd;text-decoration:none;font-size:12px}.hero{padding:45px 20px;background:linear-gradient(120deg,#f17b5f,#c94b3b);color:#fff;text-align:center}.hero h1{font-size:clamp(28px,5vw,42px);margin:8px}.hero p{max-width:600px;margin:8px auto;line-height:1.6}.wrap{max-width:980px;margin:25px auto;padding:0 16px}.notice{background:#fff;border:1px solid #e3d5ca;border-radius:12px;padding:16px;line-height:1.6;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.product{background:white;border:1px solid #e5d8ce;border-radius:12px;padding:15px}.product h3{font-size:15px;margin:0 0 8px}.product p{color:#7a685d;font-size:12px;line-height:1.5}.price{font-weight:900;color:#bd4b38}.btn{display:inline-block;background:#2b211d;color:#fff;text-decoration:none;padding:11px 14px;border-radius:8px;font-size:12px;font-weight:800}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0}.empty{text-align:center;padding:22px;color:#78675d}@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:460px){.grid{grid-template-columns:1fr}}
+
+/* HAITIBOUTIK GLOBAL THEME 5 — Noir Premium & Turquoise */
+:root{color-scheme:dark;--bg:#0b1114;--panel:#111b20;--panel2:#172329;--line:#26383e;--text:#edf7f6;--muted:#9bb0b2;--accent:#16c7b0;--accent2:#50e0cf;--green:#16c7b0}
+html{scroll-behavior:auto!important;background:#0b1114!important;scroll-padding-top:14px}
+body{background:#0b1114!important;color:#edf7f6!important}
+header,.top,.topbar,.navbar,.site-header{background:#101a1e!important;border-color:#26383e!important;color:#edf7f6!important}
+main,.main,.content{color:#edf7f6!important}
+h1,h2,h3,h4,strong,b,label{color:#edf7f6}
+p,small,.muted,.subtitle,.description{color:#a9bcbd}
+.card,.panel,.metric,.stat,.stat-card,.product-card,.auth-card,.form-card,.step-card,.summary,.notice,.admin-card,.delivery-card,.feature-card,.info-card,article{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
+.hero,.hero-card,.banner,.highlight{background:linear-gradient(125deg,#123b39,#10272a)!important;color:#f2fbfa!important;border:1px solid #1e5a54!important;box-shadow:none!important}
+.hero h1,.hero h2,.hero h3,.hero p,.hero-card h1,.hero-card h2,.hero-card p,.banner h1,.banner p{color:#f2fbfa!important}
+button,.button,.btn,a.button,.cta{background:#16c7b0!important;color:#06201d!important;border:1px solid #16c7b0!important;box-shadow:none!important}
+button:hover,.button:hover,.btn:hover,a.button:hover,.cta:hover{background:#50e0cf!important;color:#06201d!important}
+a{color:#50e0cf}
+input,select,textarea{background:#142126!important;color:#edf7f6!important;border:1px solid #345057!important}
+input::placeholder,textarea::placeholder{color:#82999b!important}
+hr{border-color:#26383e!important}
+.badge,.tag,.pill{background:#173c39!important;color:#5ce6d5!important}
+nav a:not(.button){color:#a9dcd6!important}
+footer{color:#9bb0b2!important;border-color:#26383e!important}
+img{max-width:100%}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style></head><body><header class="top"><a class="brand" href="./index.html">Haiti<span>Boutik</span></a><a href="./espace-marchand.html">Espace marchand →</a></header><section class="hero"><div style="font-size:11px;letter-spacing:2px">VOTRE BOUTIQUE EN LIGNE</div><h1 id="name">Bienvenue dans ma boutique</h1><p id="description">Découvrez nos produits et contactez-nous pour passer commande.</p></section><main class="wrap"><section class="notice"><strong id="category">Boutique</strong><p id="city" style="margin:6px 0"></p><div id="contact"></div><div class="actions"><a class="btn" id="whatsapp" href="#">Contacter le vendeur</a><a class="btn" href="./creer-boutique.html">Modifier ma boutique</a></div></section><h2>Nos produits</h2><p style="color:#79685e;font-size:12px">Les produits enregistrés dans votre espace marchand sur cet appareil.</p><section class="grid" id="products"><div class="empty">Aucun produit pour le moment. Ajoutez vos articles depuis votre espace marchand.</div></section><p class="empty" id="emptyNote">Aperçu local de démonstration. Cette page n'est pas encore publiée sur une adresse boutique personnelle.</p></main>
 <script>
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -9,4 +32,16 @@ let shop={};try{shop=JSON.parse(localStorage.getItem('haitiboutik_shop_draft')||
 if(shop.name){document.title=shop.name+' — HaitiBoutik';document.getElementById('name').textContent=shop.name;document.getElementById('description').textContent=shop.description||'Bienvenue dans notre boutique.';document.querySelector('.hero').style.background='linear-gradient(120deg,'+(shop.color||'#f17b5f')+',#c94b3b)';document.getElementById('category').textContent=shop.category||'Boutique';document.getElementById('city').textContent=shop.city||'';document.getElementById('contact').textContent='Contact : '+(shop.phone||'');const num=(shop.phone||'').replace(/\D/g,'');if(num.length>=8)document.getElementById('whatsapp').href='https://wa.me/'+num;else document.getElementById('whatsapp').style.display='none';}
 let products=[];try{products=JSON.parse(localStorage.getItem('haitiboutik_demo_products')||'[]')}catch(e){}
 const root=document.getElementById('products');if(products.length){root.innerHTML=products.map(p=>'<article class="product">'+(p.image?'<img src="'+esc(p.image)+'" alt="" style="width:100%;height:150px;object-fit:contain">':'')+'<h3>'+esc(p.name)+'</h3><p>'+esc(p.description||'')+'</p><div class="price">'+Number(p.price).toLocaleString('fr-FR')+' GDS</div><small>Stock : '+Number(p.stock||0)+'</small></article>').join('');document.getElementById('emptyNote').textContent='Aperçu local uniquement : vos produits ne sont pas encore publiés sur internet.';}
-</script></body></html>
+</script>
+<script>
+/* HAITIBOUTIK_NAV_SCROLL_V1 — navigation fluide sans animation lourde */
+document.addEventListener("click",function(event){
+ const link=event.target.closest('a[href^="#"]');
+ if(!link)return;
+ const id=link.getAttribute("href").slice(1);
+ if(!id)return;
+ const target=document.getElementById(decodeURIComponent(id));
+ if(target){event.preventDefault();target.scrollIntoView({behavior:"auto",block:"start"});}
+});
+</script>
+</body></html>
