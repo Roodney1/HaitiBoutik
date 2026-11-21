@@ -89,7 +89,7 @@ body,.app,.main,.content{background:#0b1114!important;color:#edf7f6!important}
 a{color:inherit}
 @media(max-width:620px){.sidebar{background:#0e171b!important}.top{background:#101a1e!important}}
 
-</style></head><body>
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="./supabase-client.js"></script></head><body>
 <div class="app"><aside class="sidebar" id="sidebar"><div class="brand"><div class="logo">H</div><div>HaitiBoutik<small>VOTRE COMMERCE, EN LIGNE</small></div></div>
 <div class="navtitle">ESPACE MARCHAND</div><a class="nav active" href="#accueil" data-view="dashboard"><span class="ic">▦</span>Tableau de bord</a><a class="nav" href="#boutique" data-view="shop"><span class="ic">▣</span>Ma boutique</a><a class="nav" href="#produits" data-view="products"><span class="ic">◇</span>Produits</a><a class="nav" href="#commandes" data-view="orders"><span class="ic">▤</span>Commandes</a><a class="nav" href="#clients" data-view="customers"><span class="ic">♙</span>Clients</a><div class="navtitle">DÉVELOPPEMENT</div><a class="nav" href="#marketing" data-view="marketing"><span class="ic">↗</span>Marketing</a><a class="nav" href="#promotions" data-view="discounts"><span class="ic">％</span>Réductions</a><div class="navtitle">ACTIVITÉ</div><a class="nav" href="#livraisons" data-view="delivery"><span class="ic">⌁</span>Livraisons</a><a class="nav" href="#paiements" data-view="payments"><span class="ic">＄</span>Paiements</a><a class="nav" href="#statistiques" data-view="stats"><span class="ic">▥</span>Statistiques</a><div class="navtitle">PLATEFORME</div><a class="nav" href="./admin.html"><span class="ic">⚑</span>Administration (aperçu)</a><a class="nav" href="./boutique.html"><span class="ic">▣</span>Vitrine client</a><div class="navtitle">PRÉFÉRENCES</div><a class="nav" href="#parametres" data-view="settings"><span class="ic">⚙</span>Paramètres</a><div class="sidefoot">HaitiBoutik · Espace marchand<br>Conçu pour les entreprises haïtiennes<br><span style="color:#e78a6d">●</span> Prototype frontend</div></aside>
 <main class="main"><header class="top"><div style="display:flex;align-items:center;gap:11px"><button class="round menu" id="menu">☰</button><div class="crumb">Espace marchand&nbsp; / &nbsp;<b>Vue d'ensemble</b></div></div><div class="right"><input class="topsearch" id="adminSearch" type="search" placeholder="Rechercher dans votre espace…"><button class="round" id="bell">♧</button><div class="user"><div class="avatar" id="userAvatar">HB</div><span id="userShopName">Mon compte&nbsp;⌄</span></div></div></header>
@@ -197,4 +197,48 @@ $('save').onclick=()=>{
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {})); }
 </script>
 
-</body></html>
+<script>
+(function(){
+ const client=window.haitiBoutikSupabase;if(!client)return;
+ const $=id=>document.getElementById(id);let user=null,shop=null,items=[],editing=null;
+ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ async function start(){
+  const {data:{user:u},error:authError}=await client.auth.getUser();
+  if(authError||!u){location.replace('./connexion.html?next=espace-marchand.html');return;}user=u;
+  const result=await client.from('shops').select('*').eq('owner_id',user.id).order('created_at',{ascending:false}).limit(1).maybeSingle();
+  if(result.error){notify('Impossible de charger votre boutique : '+result.error.message);return;}shop=result.data;
+  if(!shop){location.replace('./creer-boutique.html');return;}
+  const title=$('heroShopTitle');if(title)title.textContent=shop.name;
+  const desc=$('heroShopDesc');if(desc)desc.textContent=(shop.description||'Votre boutique HaitiBoutik')+' · '+(shop.city||'Haïti');
+  const userName=$('userShopName');if(userName)userName.textContent=shop.name;
+  const greeting=$('dashboardGreeting');if(greeting)greeting.textContent='Bonjour, '+((user.user_metadata?.full_name||'marchand').split(/\s+/)[0])+' ! 👋';
+  const nameInput=$('shopName');if(nameInput)nameInput.value=shop.name||'';
+  const phoneInput=$('shopPhone');if(phoneInput)phoneInput.value=user.user_metadata?.phone||'';
+  if(shop.status!=='active')notify('Votre boutique est enregistrée. Activation requise : 750 GDS (paiement à valider).');
+  await loadProducts();
+ }
+ async function loadProducts(){
+  const {data,error}=await client.from('products').select('*').eq('shop_id',shop.id).order('created_at',{ascending:false});
+  if(error){notify('Erreur de chargement des produits : '+error.message);return;}items=data||[];render();
+ }
+ function render(){
+  const el=$('productList');if(!el)return;el.replaceChildren();
+  if(!items.length){const p=document.createElement('p');p.className='muted';p.style.fontSize='11px';p.textContent='Aucun produit enregistré en ligne.';el.appendChild(p);return;}
+  items.forEach(p=>{const row=document.createElement('div');row.className='product-row';const info=document.createElement('div');const strong=document.createElement('strong');strong.textContent=p.name;const small=document.createElement('small');small.textContent=Number(p.price_gds).toLocaleString('fr-FR')+' GDS · Stock : '+p.stock+' · '+(p.is_published?'Publié':'Non publié');info.append(strong,small);const actions=document.createElement('div');actions.className='product-actions';const edit=document.createElement('button');edit.className='tinybtn';edit.textContent='Modifier';edit.onclick=()=>open(p);const del=document.createElement('button');del.className='tinybtn danger';del.textContent='Supprimer';del.onclick=()=>remove(p.id);actions.append(edit,del);row.append(info,actions);el.appendChild(row);});
+ }
+ function open(p){editing=p?.id||null;$('productModalTitle').textContent=p?'Modifier le produit':'Ajouter un produit';$('pname').value=p?.name||'';$('pprice').value=p?.price_gds??'';$('pstock').value=p?.stock??0;$('pimage').value=p?.image_url||'';$('pdesc').value=p?.description||'';$('modal').style.display='flex';}
+ async function save(){
+  const name=$('pname').value.trim(),price=Number($('pprice').value),stock=Number($('pstock').value),image=$('pimage').value.trim(),description=$('pdesc').value.trim();
+  if(!name||!Number.isFinite(price)||price<=0||!Number.isInteger(stock)||stock<0){notify('Vérifiez le nom, le prix et le stock.');return;}
+  if(image){try{const u=new URL(image);if(!['https:','http:'].includes(u.protocol))throw new Error();}catch(e){notify('Le lien de la photo doit être une URL valide.');return;}}
+  const payload={shop_id:shop.id,name,price_gds:price,stock,image_url:image||null,description,is_published:false};
+  const b=$('save');b.disabled=true;
+  try{const res=editing?await client.from('products').update(payload).eq('id',editing).eq('shop_id',shop.id):await client.from('products').insert(payload);if(res.error)throw res.error;await loadProducts();$('modal').style.display='none';editing=null;notify('Produit enregistré dans votre boutique en ligne.');}
+  catch(e){notify('Enregistrement impossible : '+e.message);}finally{b.disabled=false;}
+ }
+ async function remove(id){if(!confirm('Supprimer ce produit de votre boutique ?'))return;const {error}=await client.from('products').delete().eq('id',id).eq('shop_id',shop.id);if(error){notify('Suppression impossible : '+error.message);return;}await loadProducts();notify('Produit supprimé.');}
+ $('add').onclick=()=>{showView('products');open(null);};$('addFromProducts').onclick=()=>open(null);$('save').onclick=save;$('cancel').onclick=()=>{$('modal').style.display='none';editing=null;};
+ $('saveSettings').onclick=async()=>{const name=$('shopName').value.trim();if(!name){notify('Le nom de la boutique est obligatoire.');return;}const {error}=await client.from('shops').update({name}).eq('id',shop.id);if(error){notify('Modification impossible : '+error.message);return;}shop.name=name;if($('heroShopTitle'))$('heroShopTitle').textContent=name;if($('userShopName'))$('userShopName').textContent=name;notify('Nom de la boutique mis à jour.');};
+ start();
+})();
+</script></body></html>
