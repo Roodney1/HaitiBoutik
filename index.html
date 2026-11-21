@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171311">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171311"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
 <meta name="description" content="HaitiBoutik — espace marchand pour gérer votre commerce en Haïti.">
 <title>HaitiBoutik — Espace marchand</title>
 <style>
@@ -30,4 +30,5 @@ const modal=$('modal');$('add').onclick=()=>modal.style.display='flex';$('cancel
 let products=JSON.parse(localStorage.getItem('haitiboutik_demo_products')||'[]');function showProducts(){let el=$('productList');if(!el)return;el.innerHTML=products.map(p=>'<li>'+escapeHtml(p.name)+' — '+p.price.toLocaleString('fr-FR')+' GDS</li>').join('')}
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 $('save').onclick=()=>{let name=$('pname').value.trim(),price=Number($('pprice').value);if(!name||!Number.isFinite(price)||price<=0){notify('Saisissez un nom et un prix valides.');return}products.push({name,price});localStorage.setItem('haitiboutik_demo_products',JSON.stringify(products));modal.style.display='none';$('pname').value='';$('pprice').value='';notify('Produit enregistré sur cet appareil. La synchronisation en ligne viendra avec le backend.')};
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {})); }
 </script></body></html>
