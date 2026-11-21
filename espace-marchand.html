@@ -214,7 +214,7 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { wind
   const greeting=$('dashboardGreeting');if(greeting)greeting.textContent='Bonjour, '+((user.user_metadata?.full_name||'marchand').split(/\s+/)[0])+' ! 👋';
   const nameInput=$('shopName');if(nameInput)nameInput.value=shop.name||'';
   const phoneInput=$('shopPhone');if(phoneInput)phoneInput.value=shop.contact_phone||user.user_metadata?.phone||'';
-  if(shop.status!=='active')notify('Votre boutique est enregistrée. Activation requise : 750 GDS (paiement à valider).');
+  if(shop.status!=='active')notify('Votre boutique est enregistrée. Activation requise : 750 GDS (paiement à valider).');const shopView=document.getElementById('shop');if(shopView&&!document.getElementById('shopSharePanel')){const panel=document.createElement('article');panel.id='shopSharePanel';panel.className='panel';const title=document.createElement('h3');title.textContent='Adresse de ma boutique';const note=document.createElement('p');note.textContent=shop.status==='active'?'Partagez ce lien avec vos clients.':'Votre lien sera accessible au public après activation de la boutique.';const link=document.createElement('a');link.className='btn hot';link.href='./ma-boutique.html?slug='+encodeURIComponent(shop.slug);link.textContent='Ouvrir le lien public';panel.append(title,note,link);shopView.appendChild(panel);}
   await loadSupplierOptions();await loadProducts();await loadOrders();
  }
  async function loadOrders(){
