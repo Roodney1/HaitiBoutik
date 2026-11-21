@@ -17,7 +17,9 @@ Plateforme en construction pour permettre aux commerçants en Haïti de créer e
 - `boutique.html` : catalogue de démonstration avec 30 fiches produits, photos, recherche, filtres, tri et panier local.
 - `connexion.html` : maquette de connexion (aucune authentification active).
 - `admin.html` : aperçu du centre d'administration (maquette non sécurisée).
-- `livraison.html` : aperçu des deux modes de livraison et des règles de suivi.
+- `livraison.html` : aperçu des règles de livraison.
+- `fournisseurs.html` : présentation du portail fournisseur et de l’expédition directe au client.
+- `supabase/migrations/20261121_supplier_fulfillment.sql` : modèle initial des fournisseurs, de leur catalogue et des commandes à expédier directement.
 - `manifest.webmanifest`, `sw.js`, `assets/icon.svg` : installation comme application web et cache hors ligne de base.
 - `supabase/schema.sql` : première structure SQL et politiques RLS.
 - `supabase/migrations/20261121_profile_security.sql` : création automatique du profil après inscription Supabase et protection contre l'auto-attribution du rôle administrateur.
