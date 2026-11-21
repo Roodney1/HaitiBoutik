@@ -25,8 +25,7 @@ Voir `supabase/schema.sql` : profils, boutiques, produits, commandes, lignes de 
 1. Tester l'interface actuelle sur téléphone : navigation par sections, gestion locale des produits et affichage responsive.
 2. Créer un projet Supabase et appliquer `supabase/schema.sql`, puis exécuter `supabase/migrations/20261121_profile_security.sql` dans le SQL Editor.
 3. Vérifier l'inscription, le déclencheur de profil et les politiques RLS avec des comptes de test marchand et administrateur.
-2. Créer un projet Supabase et appliquer le schéma SQL.
-3. Construire inscription/connexion et création de profil.
+4. Construire inscription/connexion sécurisée et récupération de mot de passe.
 4. Construire création de boutique, slug public et verrouillage tant que l'activation n'est pas vérifiée.
 5. Construire catalogue public, panier et création de commande.
 6. Construire tableau de bord marchand : produits, stock, commandes.
