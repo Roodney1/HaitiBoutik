@@ -2,9 +2,44 @@
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171311"><meta name="description" content="Créez votre boutique en ligne en Haïti avec HaitiBoutik."><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg"><title>HaitiBoutik — Créez votre boutique</title>
 <style>
 :root{--bg:#171311;--panel:#241e1a;--line:#49382f;--text:#fff7f1;--muted:#c0aaa0;--orange:#f0785d;--cream:#f7eee8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#593025,#171311 60%);color:var(--text);font:15px Inter,Arial,sans-serif}a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:900}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(140deg,#ff9b76,#e44f3f);color:#2c160f}.top a.login{font-size:13px;color:#ffd1c1}.hero{padding:65px 0 45px;max-width:750px}.eyebrow{color:#f5a48a;letter-spacing:2px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.06;margin:16px 0}.hero p{color:#d2bdb2;line-height:1.7;max-width:590px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #69483a;border-radius:10px;padding:14px 19px;font-weight:800;font-size:13px;background:#30231e;color:#ffece3}.btn.hot{background:linear-gradient(110deg,#f38a6c,#e85842);border:0;color:#2b130e}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}.step,.feature{background:linear-gradient(145deg,#2b2420,#211b18);border:1px solid var(--line);border-radius:15px;padding:20px}.num{color:#f49b7f;font-size:12px;font-weight:900}.step h3,.feature h3{margin:9px 0;font-size:17px}.step p,.feature p{font-size:12px;color:#bda99e;line-height:1.6;margin:0}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 45px}.icon{font-size:22px;color:#f49b7f}.footer{border-top:1px solid var(--line);padding:20px 0;color:#a99489;font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag{display:inline-block;background:#453026;color:#ffc1a7;padding:7px 10px;border-radius:30px;font-size:11px}@media(max-width:700px){.wrap{padding:17px}.hero{padding:48px 0 30px}.steps,.features{grid-template-columns:1fr}.step,.feature{padding:17px}}
+
+/* HAITIBOUTIK GLOBAL THEME 5 — Noir Premium & Turquoise */
+:root{color-scheme:dark;--bg:#0b1114;--panel:#111b20;--panel2:#172329;--line:#26383e;--text:#edf7f6;--muted:#9bb0b2;--accent:#16c7b0;--accent2:#50e0cf;--green:#16c7b0}
+html{scroll-behavior:auto!important;background:#0b1114!important;scroll-padding-top:14px}
+body{background:#0b1114!important;color:#edf7f6!important}
+header,.top,.topbar,.navbar,.site-header{background:#101a1e!important;border-color:#26383e!important;color:#edf7f6!important}
+main,.main,.content{color:#edf7f6!important}
+h1,h2,h3,h4,strong,b,label{color:#edf7f6}
+p,small,.muted,.subtitle,.description{color:#a9bcbd}
+.card,.panel,.metric,.stat,.stat-card,.product-card,.auth-card,.form-card,.step-card,.summary,.notice,.admin-card,.delivery-card,.feature-card,.info-card,article{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
+.hero,.hero-card,.banner,.highlight{background:linear-gradient(125deg,#123b39,#10272a)!important;color:#f2fbfa!important;border:1px solid #1e5a54!important;box-shadow:none!important}
+.hero h1,.hero h2,.hero h3,.hero p,.hero-card h1,.hero-card h2,.hero-card p,.banner h1,.banner p{color:#f2fbfa!important}
+button,.button,.btn,a.button,.cta{background:#16c7b0!important;color:#06201d!important;border:1px solid #16c7b0!important;box-shadow:none!important}
+button:hover,.button:hover,.btn:hover,a.button:hover,.cta:hover{background:#50e0cf!important;color:#06201d!important}
+a{color:#50e0cf}
+input,select,textarea{background:#142126!important;color:#edf7f6!important;border:1px solid #345057!important}
+input::placeholder,textarea::placeholder{color:#82999b!important}
+hr{border-color:#26383e!important}
+.badge,.tag,.pill{background:#173c39!important;color:#5ce6d5!important}
+nav a:not(.button){color:#a9dcd6!important}
+footer{color:#9bb0b2!important;border-color:#26383e!important}
+img{max-width:100%}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style></head><body><main class="wrap">
 <header class="top"><a class="brand" href="./index.html"><span class="logo">H</span> HaitiBoutik</a><a class="login" href="./connexion.html">Vous avez déjà une boutique ? Se connecter →</a></header>
 <section class="hero"><span class="tag">Conçu pour les commerçants haïtiens</span><div class="eyebrow" style="margin-top:22px">VOTRE COMMERCE, EN LIGNE</div><h1>Créez votre boutique en ligne. <span style="color:#f38a6c">Pas à pas.</span></h1><p>Donnez un nom à votre boutique, ajoutez vos produits et préparez votre vitrine pour vos clients. Tout se fait depuis votre téléphone, en français et en gourdes haïtiennes.</p><div class="buttons"><a class="btn hot" href="./creer-boutique.html">＋ Créer ma boutique</a><a class="btn" href="./boutique.html">Découvrir le catalogue</a></div></section>
 <section class="steps"><article class="step"><div class="num">ÉTAPE 01</div><h3>Créez votre espace</h3><p>Renseignez vos informations et choisissez le nom de votre boutique.</p></article><article class="step"><div class="num">ÉTAPE 02</div><h3>Ajoutez vos produits</h3><p>Ajoutez vos photos, vos prix en GDS et vos quantités en stock.</p></article><article class="step"><div class="num">ÉTAPE 03</div><h3>Préparez votre vitrine</h3><p>Visualisez votre boutique et obtenez un aperçu à partager après sa mise en ligne.</p></article></section>
 <section class="features"><article class="feature"><div class="icon">▣</div><h3>Votre propre boutique</h3><p>Un espace dédié à votre activité avec vos produits et vos informations.</p></article><article class="feature"><div class="icon">⌁</div><h3>Deux modes de livraison</h3><p>Livraison par un partenaire HaitiBoutik ou par le livreur choisi par le marchand.</p></article><article class="feature"><div class="icon">＄</div><h3>Paiements locaux prévus</h3><p>MonCash et NatCash sont prévus. Leur activation dépend encore des accès officiels.</p></article></section>
-<footer class="footer"><span>© 2026 HaitiBoutik · Plateforme en construction</span><span>Haïti · GDS · Français</span></footer></main></body></html>
+<footer class="footer"><span>© 2026 HaitiBoutik · Plateforme en construction</span><span>Haïti · GDS · Français</span></footer></main>
+<script>
+/* HAITIBOUTIK_NAV_SCROLL_V1 — navigation fluide sans animation lourde */
+document.addEventListener("click",function(event){
+ const link=event.target.closest('a[href^="#"]');
+ if(!link)return;
+ const id=link.getAttribute("href").slice(1);
+ if(!id)return;
+ const target=document.getElementById(decodeURIComponent(id));
+ if(target){event.preventDefault();target.scrollIntoView({behavior:"auto",block:"start"});}
+});
+</script>
+</body></html>
