@@ -10,7 +10,10 @@ Plateforme en construction pour permettre aux commerçants en Haïti de créer e
 - Le marchand prend en charge les frais de livraison.
 
 ## Fichiers
-- `index.html` : tableau de bord marchand responsive avec navigation par sections, gestion locale des produits (ajout, modification, suppression, prix, stock, photo et description) et paramètres locaux.
+- `index.html` : page d’accueil en français qui présente HaitiBoutik et guide les visiteurs vers la création de leur boutique.
+- `creer-boutique.html` : assistant de création en trois étapes.
+- `ma-boutique.html` : aperçu local de la vitrine personnalisée.
+- `espace-marchand.html` : tableau de bord marchand et gestion locale des produits.
 - `boutique.html` : catalogue de démonstration avec 30 fiches produits, photos, recherche, filtres, tri et panier local.
 - `connexion.html` : maquette de connexion (aucune authentification active).
 - `admin.html` : aperçu du centre d'administration (maquette non sécurisée).
