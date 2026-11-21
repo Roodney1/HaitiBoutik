@@ -10,29 +10,45 @@
 @media(max-width:900px){.app{grid-template-columns:185px 1fr}.metrics{grid-template-columns:repeat(2,1fr)}.lower{grid-template-columns:1fr}.bottom{grid-template-columns:1fr}}
 @media(max-width:620px){.app{display:block}.sidebar{position:fixed;z-index:10;top:0;bottom:0;left:-240px;width:225px;transition:.25s}.sidebar.show{left:0}.menu{display:inline-block}.top{height:59px;padding:0 13px}.content{padding:16px 12px}.welcome{align-items:flex-start;flex-direction:column}.welcome h1{font-size:18px}.hero{grid-template-columns:1fr;padding:18px}.hero h2{font-size:21px}.gaugewrap{position:absolute;right:13px;bottom:12px;opacity:.95}.gauge{width:90px;height:90px}.gauge:before{width:76px;height:76px}.gaugein strong{font-size:20px}.bubblecol{display:none}.herofoot{gap:15px;margin-top:14px}.herofoot strong{font-size:15px}.metrics{gap:8px}.metric{padding:12px;min-height:102px}.metric strong{font-size:18px}.panel{padding:13px}.shortcuts{grid-template-columns:repeat(2,1fr)}.user span{display:none}}
 
-/* Interface claire inspirée des standards des grands tableaux de bord e-commerce */
-:root{--bg:#f6f6f7;--panel:#fff;--panel2:#f1f2f3;--line:#e1e3e5;--text:#202223;--muted:#6d7175;--orange:#008060;--orange2:#00a47c;--green:#008060;--cream:#f6f6f7}
-body{background:#f6f6f7;color:#202223;font-family:Inter,Arial,sans-serif}.app{background:#f6f6f7}
-.sidebar{background:#f1f2f3;border-color:#e1e3e5}.brand{color:#202223}.brand small{color:#6d7175}.logo{background:#202223;color:#fff;box-shadow:none}
-.navtitle{color:#6d7175}.nav{color:#3d4144}.nav:hover,.nav.active{background:#e3e5e7;color:#202223}.sidefoot{border-color:#e1e3e5;color:#6d7175}
-.top{background:#fff;border-color:#e1e3e5}.crumb{color:#6d7175}.crumb b{color:#202223}.round{background:#fff;color:#202223;border-color:#c9cccf}
-.hero{background:linear-gradient(110deg,#202223,#3d4543);box-shadow:none}.metric,.metric.red{background:#fff;color:#202223;border:1px solid #e1e3e5;box-shadow:0 1px 2px #00000008}
-.metrichead,.red .metrichead,.metric small,.red small{color:#6d7175}.delta,.red .delta{color:#008060}
-.panel{background:#fff;border:1px solid #e1e3e5;box-shadow:0 1px 2px #00000008}.panelhead p,.schedule small,.notice,.empty-state{color:#6d7175}
-.schedule,.shortcut{background:#f6f6f7;border-color:#e1e3e5;color:#202223}.shortcut span{color:#008060}
-.tinybtn,.btn{background:#fff;border-color:#c9cccf;color:#202223}.btn.hot,.herocta{background:#008060;color:#fff;border:0;box-shadow:none}
-.notice{border-color:#e1e3e5}.tag{background:#e4f1ed;color:#006e52}.orders th{color:#6d7175;border-color:#e1e3e5}.orders td{border-color:#e1e3e5}
-.chart{background:repeating-linear-gradient(to bottom,transparent 0,transparent 38px,#e1e3e5 39px)}
-.field input,.field textarea{background:#fff;color:#202223;border-color:#c9cccf}.modal{background:#fff;color:#202223;border-color:#e1e3e5}
-.modal p,.field label{color:#6d7175}.product-row{border-color:#e1e3e5}.toast{background:#202223;color:#fff}
-.topsearch{width:min(360px,42vw);padding:9px 12px;border:1px solid #c9cccf;border-radius:8px;background:#f6f6f7;color:#202223}
-.viewhead h1{color:#202223}
-@media(max-width:620px){.sidebar{background:#fff;box-shadow:8px 0 30px #0002}.topsearch{width:36vw}}
 
-/* Tableau de bord marchand : accueil personnalisé après création */
-:root{--bg:#f5f7fb;--panel:#fff;--line:#e4e9f2;--text:#172554;--muted:#64748b;--orange:#1457e6;--orange2:#3979ff;--green:#059669}
-body{background:#f4f6fb;color:#172554}.app,.main{background:#f4f6fb}.sidebar{background:#101c3c;border-color:#26365d}.brand,.brand small,.navtitle,.nav,.sidefoot{color:#dce6ff}.nav:hover,.nav.active{background:#1457e6;color:#fff}.top{background:#fff;border-color:#e4e9f2}.crumb,.crumb b{color:#172554}.round{background:#fff;color:#172554;border-color:#e4e9f2}.content{max-width:1500px}.hero{background:linear-gradient(110deg,#e8efff,#dce8ff);color:#172554;border:1px solid #d6e2ff;box-shadow:none}.hero p,.herofoot span{color:#52658b}.hero h2{color:#172554}.eyebrow{color:#1457e6}.herocta{background:#1457e6;color:white}.gauge{background:conic-gradient(#1457e6 0 0%,#cbd8f3 0 100%)}.gauge:before{background:#e8efff}.gaugein span{color:#64748b}.metric,.metric.red{background:#fff;color:#172554;border:1px solid #e4e9f2;box-shadow:0 2px 8px #0f27500a}.metrichead,.metric small,.red small{color:#64748b}.delta,.red .delta{color:#059669}.panel{background:#fff;border:1px solid #e4e9f2;box-shadow:0 2px 8px #0f275008}.panelhead p,.schedule small,.notice,.empty-state{color:#64748b}.schedule,.shortcut{background:#f7f9fd;border-color:#e4e9f2;color:#172554}.shortcut span{color:#1457e6}.tinybtn,.btn{background:#fff;border-color:#d6deea;color:#172554}.btn.hot,.herocta{background:#1457e6;color:#fff;border:0}.notice{border-color:#e4e9f2}.tag{background:#e8f2ff;color:#1457e6}.orders th,.orders td{border-color:#e4e9f2}.chart{background:repeating-linear-gradient(to bottom,transparent 0,transparent 38px,#e4e9f2 39px)}.field input,.field textarea,.modal{background:#fff;color:#172554;border-color:#d6deea}.modal p,.field label{color:#64748b}.product-row{border-color:#e4e9f2}.toast{background:#172554;color:#fff}.viewhead h1{color:#172554}.topsearch{background:#f7f9fd;border-color:#e4e9f2;color:#172554}
-@media(max-width:620px){.sidebar{background:#101c3c}.hero{background:linear-gradient(110deg,#e8efff,#dce8ff)}}
+/* THEME HAITIBOUTIK V2 — tableau de bord marchand clair */
+:root{--bg:#f5f7fb!important;--panel:#fff!important;--panel2:#f1f4f9!important;--line:#e1e7f0!important;--text:#17233c!important;--muted:#68758b!important;--orange:#155eef!important;--orange2:#3b82f6!important;--green:#059669!important;--cream:#f5f7fb!important}
+html,body{background:#f5f7fb!important;color:#17233c!important;font-family:Inter,Arial,sans-serif!important}
+body{background:#f5f7fb!important}
+.app,.main,.content{background:#f5f7fb!important}
+.sidebar{background:#14213d!important;border-right:1px solid #263653!important}
+.brand,.brand small,.navtitle,.nav,.sidefoot{color:#e4ecff!important}
+.logo{background:#fff!important;color:#155eef!important;box-shadow:none!important}
+.nav:hover,.nav.active{background:#244477!important;color:#fff!important}
+.top{background:#fff!important;border-bottom:1px solid #e1e7f0!important}
+.crumb,.crumb b{color:#263653!important}
+.round{background:#fff!important;color:#17233c!important;border-color:#d9e1ec!important}
+.welcome h1,.viewhead h1{color:#17233c!important}
+.welcome p,.viewhead p{color:#68758b!important}
+.hero{background:linear-gradient(115deg,#eaf1ff,#dce8ff)!important;color:#17233c!important;border:1px solid #d4e1fa!important;box-shadow:none!important}
+.hero h2{color:#17233c!important}.hero p,.herofoot span{color:#536887!important}.eyebrow{color:#155eef!important}
+.herocta{background:#155eef!important;color:#fff!important}.gauge{background:conic-gradient(#155eef 0 0%,#cbd8ef 0 100%)!important}
+.gauge:before{background:#eaf1ff!important}.gaugein span{color:#536887!important}
+.metric,.metric.red{background:#fff!important;color:#17233c!important;border:1px solid #e1e7f0!important;box-shadow:0 2px 8px #152b4d0a!important}
+.metrichead,.red .metrichead,.metric small,.red small{color:#68758b!important}.delta,.red .delta{color:#059669!important}
+.panel{background:#fff!important;color:#17233c!important;border:1px solid #e1e7f0!important;box-shadow:0 2px 8px #152b4d0a!important}
+.panel h3,.panel strong{color:#17233c!important}.panelhead p,.schedule small,.notice,.empty-state{color:#68758b!important}
+.schedule,.shortcut{background:#f7f9fc!important;border:1px solid #e1e7f0!important;color:#17233c!important}
+.shortcut span{color:#155eef!important}
+.tinybtn,.btn{background:#fff!important;border:1px solid #d5deeb!important;color:#17233c!important}
+.btn.hot,.herocta{background:#155eef!important;border:0!important;color:#fff!important}
+.notice{border-color:#e1e7f0!important}.tag{background:#eaf1ff!important;color:#155eef!important}
+.orders th{color:#68758b!important;border-color:#e1e7f0!important}.orders td{color:#263653!important;border-color:#e1e7f0!important}
+.status{background:#fff4db!important;color:#946200!important}.status.ok{background:#e5f7ef!important;color:#08784b!important}
+.chart{background:repeating-linear-gradient(to bottom,transparent 0,transparent 38px,#e7edf5 39px)!important}
+.labels{color:#68758b!important}
+.field input,.field textarea{background:#fff!important;color:#17233c!important;border-color:#d5deeb!important}
+.modal{background:#fff!important;color:#17233c!important;border-color:#d5deeb!important}
+.modal p,.field label{color:#68758b!important}.product-row{border-color:#e1e7f0!important}.product-row small{color:#68758b!important}
+.toast{background:#17233c!important;color:#fff!important}
+.topsearch{background:#f7f9fc!important;border-color:#d5deeb!important;color:#17233c!important}
+.empty-state{border-color:#d5deeb!important}
+@media(max-width:620px){.sidebar{background:#14213d!important}.top{background:#fff!important}.hero{background:linear-gradient(115deg,#eaf1ff,#dce8ff)!important}}
 </style></head><body>
 <div class="app"><aside class="sidebar" id="sidebar"><div class="brand"><div class="logo">H</div><div>HaitiBoutik<small>VOTRE COMMERCE, EN LIGNE</small></div></div>
 <div class="navtitle">ESPACE MARCHAND</div><a class="nav active" href="#accueil" data-view="dashboard"><span class="ic">▦</span>Tableau de bord</a><a class="nav" href="#boutique" data-view="shop"><span class="ic">▣</span>Ma boutique</a><a class="nav" href="#produits" data-view="products"><span class="ic">◇</span>Produits</a><a class="nav" href="#commandes" data-view="orders"><span class="ic">▤</span>Commandes</a><a class="nav" href="#clients" data-view="customers"><span class="ic">♙</span>Clients</a><div class="navtitle">DÉVELOPPEMENT</div><a class="nav" href="#marketing" data-view="marketing"><span class="ic">↗</span>Marketing</a><a class="nav" href="#promotions" data-view="discounts"><span class="ic">％</span>Réductions</a><div class="navtitle">ACTIVITÉ</div><a class="nav" href="#livraisons" data-view="delivery"><span class="ic">⌁</span>Livraisons</a><a class="nav" href="#paiements" data-view="payments"><span class="ic">＄</span>Paiements</a><a class="nav" href="#statistiques" data-view="stats"><span class="ic">▥</span>Statistiques</a><div class="navtitle">PLATEFORME</div><a class="nav" href="./admin.html"><span class="ic">⚑</span>Administration (aperçu)</a><a class="nav" href="./boutique.html"><span class="ic">▣</span>Vitrine client</a><div class="navtitle">PRÉFÉRENCES</div><a class="nav" href="#parametres" data-view="settings"><span class="ic">⚙</span>Paramètres</a><div class="sidefoot">HaitiBoutik · Espace marchand<br>Conçu pour les entreprises haïtiennes<br><span style="color:#e78a6d">●</span> Prototype frontend</div></aside>
