@@ -1,5 +1,5 @@
-const CACHE_NAME = "haitiboutik-static-v5";
-const APP_FILES = ["./","./index.html","./boutique.html","./connexion.html","./admin.html","./livraison.html","./manifest.webmanifest","./assets/icon.svg"];
+const CACHE_NAME = "haitiboutik-static-v6";
+const APP_FILES = ["./","./index.html","./creer-boutique.html","./ma-boutique.html","./espace-marchand.html","./boutique.html","./connexion.html","./admin.html","./livraison.html","./manifest.webmanifest","./assets/icon.svg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES)));
   self.skipWaiting();
