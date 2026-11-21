@@ -4,35 +4,38 @@
 - Marché : Haïti ; interface : français ; monnaie : gourde haïtienne (GDS).
 - Activation d'une boutique : 750 GDS, paiement unique.
 - Paiements visés : MonCash et NatCash.
-- Livraison : deux modes, coursier de la plateforme ou coursier du marchand.
+- Livraison : deux modes, coursier partenaire HaitiBoutik ou coursier du marchand.
 - Le marchand prend en charge les frais de livraison.
-- Le projet doit permettre à chaque marchand de gérer sa propre boutique.
+- Chaque marchand doit gérer sa propre boutique.
 
 ## État actuel
-Le dépôt contient une première interface de tableau de bord et une base SQL initiale. Ce n'est pas encore une plateforme prête à recevoir de vrais clients. Les données de démonstration et les actions locales ne remplacent pas un serveur.
+Le dépôt contient une interface frontend responsive, un catalogue de démonstration de 30 produits et une première structure SQL. Le tableau de bord permet maintenant de gérer localement des produits (ajout, modification, suppression, prix, stock, photo et description). Ces données restent dans le navigateur utilisé et ne sont pas synchronisées. Ce n'est pas encore une plateforme prête à recevoir de vrais clients.
 
 ## Architecture proposée
-- Frontend : pages web responsives, compatibles avec un navigateur Android et Acode.
-- Backend : Supabase (Auth + PostgreSQL + règles RLS), à configurer dans un projet appartenant au propriétaire.
-- Paiements : intégration serveur officielle après obtention d'un accès marchand/API.
-- Livraison : affectation manuelle au départ, puis application/portail coursier et suivi.
-- Hébergement : choisir après tests, avec variables secrètes conservées côté serveur.
+- Frontend : pages web responsives, compatibles avec navigateur Android et Acode.
+- Backend : Supabase Auth + PostgreSQL + politiques RLS, à configurer dans un projet appartenant au propriétaire.
+- Paiements : intégration serveur officielle après obtention d'un compte marchand et des accès API.
+- Livraison : affectation manuelle au départ, puis portail coursier et suivi après accords avec des partenaires.
+- Hébergement : HTTPS obligatoire, variables secrètes conservées côté serveur.
 
 ## Modèle de données
 Voir `supabase/schema.sql` : profils, boutiques, produits, commandes, lignes de commande, livraisons et paiements.
 
-## Ordre de réalisation
-1. Tester l'interface actuelle sur téléphone : navigation par sections, gestion locale des produits et affichage responsive.
-2. Créer un projet Supabase et appliquer `supabase/schema.sql`, puis exécuter `supabase/migrations/20261121_profile_security.sql` dans le SQL Editor.
-3. Vérifier l'inscription, le déclencheur de profil et les politiques RLS avec des comptes de test marchand et administrateur.
-4. Construire inscription/connexion sécurisée et récupération de mot de passe.
-4. Construire création de boutique, slug public et verrouillage tant que l'activation n'est pas vérifiée.
-5. Construire catalogue public, panier et création de commande.
-6. Construire tableau de bord marchand : produits, stock, commandes.
-7. Construire administration : validation des paiements, activation/suspension, gestion des boutiques.
-8. Construire dispatch des livraisons et espace coursier.
-9. Ajouter MonCash/NatCash avec documentation officielle, tests et validation serveur.
-10. Tester sécurité, permissions, mobile, sauvegardes et déploiement.
+## Étapes restantes avant un lancement réel
+1. Tester l'interface actuelle sur téléphone : navigation, formulaire produit, modification, suppression et affichage mobile.
+2. Créer un projet Supabase et appliquer `supabase/schema.sql`.
+3. Exécuter `supabase/migrations/20261121_profile_security.sql` dans le SQL Editor.
+4. Construire et tester inscription/connexion, récupération de mot de passe et profils.
+5. Construire la création de boutique, son slug public et le verrouillage tant que l'activation n'est pas vérifiée.
+6. Connecter les produits au backend avec stockage d'images et permissions par boutique.
+7. Construire le catalogue public, le panier et une création de commande sécurisée côté serveur.
+8. Construire le tableau de bord marchand et les outils d'administration protégés.
+9. Définir les zones, tarifs, contrats et partenaires de livraison, puis construire l'affectation des courses.
+10. Ajouter MonCash/NatCash avec documentation officielle, accès marchand, webhooks et validation serveur.
+11. Tester les autorisations, les paiements, les sauvegardes, la protection des données et le déploiement.
 
-## Règle de sécurité importante
-Ne jamais activer une boutique parce qu'un client a simplement cliqué « payé » ou envoyé une capture d'écran. L'activation doit suivre une vérification serveur ou une validation administrative fiable.
+## Sécurité
+- Ne jamais activer une boutique parce qu'un client a cliqué « payé » ou envoyé une capture d'écran.
+- La confirmation de paiement doit venir d'une vérification serveur ou d'une validation administrative fiable.
+- Ne jamais placer une clé secrète, un PIN, un OTP ou un mot de passe dans GitHub ou dans le JavaScript public.
+- Les rôles administrateur doivent être attribués uniquement par un processus de confiance, jamais par auto-inscription.
