@@ -88,6 +88,29 @@ body,.app,.main,.content{background:#0b1114!important;color:#edf7f6!important}
 .empty-state{border-color:#345057!important}
 a{color:inherit}
 @media(max-width:620px){.sidebar{background:#0e171b!important}.top{background:#101a1e!important}}
+
+/* HAITIBOUTIK GLOBAL THEME 5 — Noir Premium & Turquoise */
+:root{color-scheme:dark;--bg:#0b1114;--panel:#111b20;--panel2:#172329;--line:#26383e;--text:#edf7f6;--muted:#9bb0b2;--accent:#16c7b0;--accent2:#50e0cf;--green:#16c7b0}
+html{scroll-behavior:auto!important;background:#0b1114!important;scroll-padding-top:14px}
+body{background:#0b1114!important;color:#edf7f6!important}
+header,.top,.topbar,.navbar,.site-header{background:#101a1e!important;border-color:#26383e!important;color:#edf7f6!important}
+main,.main,.content{color:#edf7f6!important}
+h1,h2,h3,h4,strong,b,label{color:#edf7f6}
+p,small,.muted,.subtitle,.description{color:#a9bcbd}
+.card,.panel,.metric,.stat,.stat-card,.product-card,.auth-card,.form-card,.step-card,.summary,.notice,.admin-card,.delivery-card,.feature-card,.info-card,article{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
+.hero,.hero-card,.banner,.highlight{background:linear-gradient(125deg,#123b39,#10272a)!important;color:#f2fbfa!important;border:1px solid #1e5a54!important;box-shadow:none!important}
+.hero h1,.hero h2,.hero h3,.hero p,.hero-card h1,.hero-card h2,.hero-card p,.banner h1,.banner p{color:#f2fbfa!important}
+button,.button,.btn,a.button,.cta{background:#16c7b0!important;color:#06201d!important;border:1px solid #16c7b0!important;box-shadow:none!important}
+button:hover,.button:hover,.btn:hover,a.button:hover,.cta:hover{background:#50e0cf!important;color:#06201d!important}
+a{color:#50e0cf}
+input,select,textarea{background:#142126!important;color:#edf7f6!important;border:1px solid #345057!important}
+input::placeholder,textarea::placeholder{color:#82999b!important}
+hr{border-color:#26383e!important}
+.badge,.tag,.pill{background:#173c39!important;color:#5ce6d5!important}
+nav a:not(.button){color:#a9dcd6!important}
+footer{color:#9bb0b2!important;border-color:#26383e!important}
+img{max-width:100%}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style></head><body>
 <div class="app"><aside class="sidebar" id="sidebar"><div class="brand"><div class="logo">H</div><div>HaitiBoutik<small>VOTRE COMMERCE, EN LIGNE</small></div></div>
 <div class="navtitle">ESPACE MARCHAND</div><a class="nav active" href="#accueil" data-view="dashboard"><span class="ic">▦</span>Tableau de bord</a><a class="nav" href="#boutique" data-view="shop"><span class="ic">▣</span>Ma boutique</a><a class="nav" href="#produits" data-view="products"><span class="ic">◇</span>Produits</a><a class="nav" href="#commandes" data-view="orders"><span class="ic">▤</span>Commandes</a><a class="nav" href="#clients" data-view="customers"><span class="ic">♙</span>Clients</a><div class="navtitle">DÉVELOPPEMENT</div><a class="nav" href="#marketing" data-view="marketing"><span class="ic">↗</span>Marketing</a><a class="nav" href="#promotions" data-view="discounts"><span class="ic">％</span>Réductions</a><div class="navtitle">ACTIVITÉ</div><a class="nav" href="#livraisons" data-view="delivery"><span class="ic">⌁</span>Livraisons</a><a class="nav" href="#paiements" data-view="payments"><span class="ic">＄</span>Paiements</a><a class="nav" href="#statistiques" data-view="stats"><span class="ic">▥</span>Statistiques</a><div class="navtitle">PLATEFORME</div><a class="nav" href="./admin.html"><span class="ic">⚑</span>Administration (aperçu)</a><a class="nav" href="./boutique.html"><span class="ic">▣</span>Vitrine client</a><div class="navtitle">PRÉFÉRENCES</div><a class="nav" href="#parametres" data-view="settings"><span class="ic">⚙</span>Paramètres</a><div class="sidefoot">HaitiBoutik · Espace marchand<br>Conçu pour les entreprises haïtiennes<br><span style="color:#e78a6d">●</span> Prototype frontend</div></aside>
@@ -194,4 +217,16 @@ $('save').onclick=()=>{
  notify('Produit '+(data.id?'enregistré':'ajouté')+' sur cet appareil. Il ne sera pas visible en ligne sans backend.');
 };
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {})); }
-</script></body></html>
+</script>
+<script>
+/* HAITIBOUTIK_NAV_SCROLL_V1 — navigation fluide sans animation lourde */
+document.addEventListener("click",function(event){
+ const link=event.target.closest('a[href^="#"]');
+ if(!link)return;
+ const id=link.getAttribute("href").slice(1);
+ if(!id)return;
+ const target=document.getElementById(decodeURIComponent(id));
+ if(target){event.preventDefault();target.scrollIntoView({behavior:"auto",block:"start"});}
+});
+</script>
+</body></html>
