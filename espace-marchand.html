@@ -238,7 +238,7 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { wind
  }
  async function remove(id){if(!confirm('Supprimer ce produit de votre boutique ?'))return;const {error}=await client.from('products').delete().eq('id',id).eq('shop_id',shop.id);if(error){notify('Suppression impossible : '+error.message);return;}await loadProducts();notify('Produit supprimé.');}
  $('add').onclick=()=>{showView('products');open(null);};$('addFromProducts').onclick=()=>open(null);$('save').onclick=save;$('cancel').onclick=()=>{$('modal').style.display='none';editing=null;};
- $('saveSettings').onclick=async()=>{const name=$('shopName').value.trim();if(!name){notify('Le nom de la boutique est obligatoire.');return;}const {error}=await client.from('shops').update({name}).eq('id',shop.id);if(error){notify('Modification impossible : '+error.message);return;}shop.name=name;if($('heroShopTitle'))$('heroShopTitle').textContent=name;if($('userShopName'))$('userShopName').textContent=name;notify('Nom de la boutique mis à jour.');};
+ $('saveSettings').onclick=async()=>{const name=$('shopName').value.trim();if(!name){notify('Le nom de la boutique est obligatoire.');return;}const phone=$('shopPhone').value.trim();const {error}=await client.from('shops').update({name}).eq('id',shop.id);if(error){notify('Modification impossible : '+error.message);return;}const profile=await client.from('profiles').update({phone}).eq('id',user.id);if(profile.error){notify('Nom enregistré, mais téléphone non modifié : '+profile.error.message);return;}shop.name=name;if($('heroShopTitle'))$('heroShopTitle').textContent=name;if($('userShopName'))$('userShopName').textContent=name;notify('Nom de la boutique mis à jour.');};
  start();
 })();
 </script></body></html>
