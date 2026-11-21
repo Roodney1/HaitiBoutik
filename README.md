@@ -17,6 +17,7 @@ Plateforme en construction pour permettre aux commerçants en Haïti de créer e
 - `livraison.html` : aperçu des deux modes de livraison et des règles de suivi.
 - `manifest.webmanifest`, `sw.js`, `assets/icon.svg` : installation comme application web et cache hors ligne de base.
 - `supabase/schema.sql` : première structure SQL et politiques RLS.
+- `supabase/migrations/20261121_profile_security.sql` : création automatique du profil après inscription Supabase et protection contre l'auto-attribution du rôle administrateur.
 - `docs/PLAN-IMPLEMENTATION.md` : architecture et étapes.
 - `docs/INTEGRATIONS-A-FAIRE.md` : prérequis MonCash, NatCash et livraison.
 
