@@ -1,4 +1,4 @@
-const CACHE_NAME = "haitiboutik-static-v3";
+const CACHE_NAME = "haitiboutik-static-v4";
 const APP_FILES = ["./","./index.html","./boutique.html","./connexion.html","./admin.html","./livraison.html","./manifest.webmanifest","./assets/icon.svg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES)));
