@@ -49,6 +49,45 @@ body{background:#f5f7fb!important}
 .topsearch{background:#f7f9fc!important;border-color:#d5deeb!important;color:#17233c!important}
 .empty-state{border-color:#d5deeb!important}
 @media(max-width:620px){.sidebar{background:#14213d!important}.top{background:#fff!important}.hero{background:linear-gradient(115deg,#eaf1ff,#dce8ff)!important}}
+
+/* HAITIBOUTIK — style 5 : noir premium et turquoise, léger et sans animation lourde */
+:root{--bg:#0b1114;--panel:#111b20;--panel2:#172329;--line:#26383e;--text:#edf7f6;--muted:#9bb0b2;--orange:#16c7b0;--orange2:#36dfc8;--green:#16c7b0;--cream:#0b1114}
+html{scroll-behavior:auto!important}
+body,.app,.main,.content{background:#0b1114!important;color:#edf7f6!important}
+.sidebar{background:#0e171b!important;border-color:#26383e!important}
+.brand,.brand small,.navtitle,.nav,.sidefoot{color:#c5d7d7!important}
+.logo,.avatar{background:#16c7b0!important;color:#06201d!important;box-shadow:none!important}
+.nav:hover,.nav.active{background:#183b3a!important;color:#53ead8!important}
+.top{background:#101a1e!important;border-color:#26383e!important}
+.crumb,.crumb b{color:#dcebea!important}
+.round{background:#142126!important;color:#eaf7f5!important;border-color:#2a4145!important}
+.content{max-width:1480px}
+.welcome h1,.viewhead h1{color:#f2fbfa!important}
+.welcome p,.viewhead p{color:#9bb0b2!important}
+.hero{background:linear-gradient(120deg,#123b39,#0e282a)!important;color:#f2fbfa!important;border:1px solid #1e5a54!important;box-shadow:none!important}
+.hero h2{color:#f2fbfa!important}.hero p,.herofoot span{color:#b7d5d1!important}
+.eyebrow{color:#50e0cf!important}.herocta,.btn.hot{background:#16c7b0!important;color:#06201d!important;border:0!important;box-shadow:none!important}
+.gauge{background:conic-gradient(#16c7b0 0 0%,#294448 0 100%)!important}.gauge:before{background:#123b39!important}
+.gaugein span{color:#b7d5d1!important}
+.metric,.metric.red{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
+.metrichead,.red .metrichead,.metric small,.red small{color:#9bb0b2!important}
+.delta,.red .delta{color:#50e0cf!important}
+.panel{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
+.panel h3,.panel strong{color:#edf7f6!important}.panelhead p,.schedule small,.notice,.empty-state{color:#9bb0b2!important}
+.schedule,.shortcut{background:#152329!important;border:1px solid #26383e!important;color:#edf7f6!important}
+.shortcut span{color:#50e0cf!important}
+.tinybtn,.btn{background:#152329!important;border:1px solid #345057!important;color:#eaf7f5!important}
+.notice{border-color:#345057!important}.tag{background:#173c39!important;color:#5ce6d5!important}
+.orders th,.orders td{border-color:#26383e!important}.orders th{color:#9bb0b2!important}.orders td{color:#edf7f6!important}
+.chart{background:repeating-linear-gradient(to bottom,transparent 0,transparent 38px,#26383e 39px)!important}
+.labels{color:#9bb0b2!important}
+.field input,.field textarea,.modal{background:#142126!important;color:#edf7f6!important;border-color:#345057!important}
+.modal p,.field label{color:#9bb0b2!important}.product-row{border-color:#26383e!important}
+.toast{background:#16c7b0!important;color:#06201d!important}
+.topsearch{background:#142126!important;border-color:#345057!important;color:#edf7f6!important}
+.empty-state{border-color:#345057!important}
+a{color:inherit}
+@media(max-width:620px){.sidebar{background:#0e171b!important}.top{background:#101a1e!important}}
 </style></head><body>
 <div class="app"><aside class="sidebar" id="sidebar"><div class="brand"><div class="logo">H</div><div>HaitiBoutik<small>VOTRE COMMERCE, EN LIGNE</small></div></div>
 <div class="navtitle">ESPACE MARCHAND</div><a class="nav active" href="#accueil" data-view="dashboard"><span class="ic">▦</span>Tableau de bord</a><a class="nav" href="#boutique" data-view="shop"><span class="ic">▣</span>Ma boutique</a><a class="nav" href="#produits" data-view="products"><span class="ic">◇</span>Produits</a><a class="nav" href="#commandes" data-view="orders"><span class="ic">▤</span>Commandes</a><a class="nav" href="#clients" data-view="customers"><span class="ic">♙</span>Clients</a><div class="navtitle">DÉVELOPPEMENT</div><a class="nav" href="#marketing" data-view="marketing"><span class="ic">↗</span>Marketing</a><a class="nav" href="#promotions" data-view="discounts"><span class="ic">％</span>Réductions</a><div class="navtitle">ACTIVITÉ</div><a class="nav" href="#livraisons" data-view="delivery"><span class="ic">⌁</span>Livraisons</a><a class="nav" href="#paiements" data-view="payments"><span class="ic">＄</span>Paiements</a><a class="nav" href="#statistiques" data-view="stats"><span class="ic">▥</span>Statistiques</a><div class="navtitle">PLATEFORME</div><a class="nav" href="./admin.html"><span class="ic">⚑</span>Administration (aperçu)</a><a class="nav" href="./boutique.html"><span class="ic">▣</span>Vitrine client</a><div class="navtitle">PRÉFÉRENCES</div><a class="nav" href="#parametres" data-view="settings"><span class="ic">⚙</span>Paramètres</a><div class="sidefoot">HaitiBoutik · Espace marchand<br>Conçu pour les entreprises haïtiennes<br><span style="color:#e78a6d">●</span> Prototype frontend</div></aside>
@@ -103,7 +142,7 @@ V.customers.appendChild(placeholder('Votre clientèle','Aucun client enregistré
 V.marketing.appendChild(placeholder('Campagnes marketing','Les outils de campagne seront disponibles après connexion du service marketing.'));
 V.discounts.appendChild(placeholder('Codes promotionnels','La création de réductions sera activée avec le backend et le système de commandes.'));
 const delivery=document.createElement('article');delivery.className='panel';delivery.innerHTML='<h3>Deux modes de livraison</h3><p class="notice">Livraison par un partenaire HaitiBoutik ou par le livreur choisi par le marchand. Les frais sont à la charge du marchand.</p><p class="notice">L’attribution automatique et le suivi réel seront activés après connexion des partenaires et du serveur.</p><a class="btn hot" href="./livraison.html">Voir les détails des livraisons →</a>';V.delivery.appendChild(delivery);
-function showView(key){Object.entries(V).forEach(([k,v])=>v.classList.toggle('active',k===key));document.querySelectorAll('.nav[data-view]').forEach(a=>a.classList.toggle('active',a.dataset.view===key));$('sidebar').classList.remove('show');const labels={dashboard:"Vue d'ensemble",shop:"Ma boutique",products:"Produits",orders:"Commandes",delivery:"Livraisons",payments:"Paiements",stats:"Statistiques",settings:"Paramètres",customers:"Clients",marketing:"Marketing",discounts:"Réductions"};document.querySelector('.crumb b').textContent=labels[key];history.replaceState(null,'','#'+key);}
+function showView(key){Object.entries(V).forEach(([k,v])=>v.classList.toggle('active',k===key));window.scrollTo(0,0);document.querySelectorAll('.nav[data-view]').forEach(a=>a.classList.toggle('active',a.dataset.view===key));$('sidebar').classList.remove('show');const labels={dashboard:"Vue d'ensemble",shop:"Ma boutique",products:"Produits",orders:"Commandes",delivery:"Livraisons",payments:"Paiements",stats:"Statistiques",settings:"Paramètres",customers:"Clients",marketing:"Marketing",discounts:"Réductions"};document.querySelector('.crumb b').textContent=labels[key];history.replaceState(null,'','#'+key);}
 document.querySelectorAll('.nav[data-view]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();showView(a.dataset.view)}));showView('dashboard');
 const shopDraft=(()=>{try{return JSON.parse(localStorage.getItem('haitiboutik_shop_draft')||'{}')}catch(e){return {}}})();
 if(shopDraft.name){
