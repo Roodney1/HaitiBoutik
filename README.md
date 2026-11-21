@@ -1,29 +1,23 @@
 # HaitiBoutik
 
-Plateforme de commerce en ligne pensée pour les marchands haïtiens.
+Plateforme en construction pour permettre aux commerçants en Haïti de créer et gérer leur boutique en ligne.
 
-## Objectif
-Permettre à chaque marchand de créer et gérer sa boutique en ligne, ses produits, ses commandes et ses livraisons.
+## Décisions produit
+- Interface en français ; marché haïtien ; prix en GDS.
+- Frais d'activation : 750 GDS, une seule fois par boutique.
+- Paiements prévus : MonCash et NatCash.
+- Livraison : coursier partenaire HaitiBoutik ou coursier choisi par le marchand.
+- Le marchand prend en charge les frais de livraison.
 
-## Règles du projet
-- Marché cible : Haïti
-- Langue de l'interface : français
-- Devise : gourde haïtienne (GDS)
-- Activation d'une boutique : 750 GDS, paiement unique (règle à implémenter)
-- Moyens de paiement prévus : MonCash et NatCash (intégration non activée)
-- Livraison : réseau HaitiBoutik ou livreur du marchand
-- Frais de livraison : payés par le marchand
+## Fichiers
+- `index.html` : tableau de bord marchand (prototype visuel).
+- `boutique.html` : vitrine publique d'exemple avec panier local.
+- `connexion.html` : maquette de connexion (aucune authentification active).
+- `supabase/schema.sql` : première structure SQL et politiques RLS.
+- `docs/PLAN-IMPLEMENTATION.md` : architecture et étapes.
+- `docs/INTEGRATIONS-A-FAIRE.md` : prérequis MonCash, NatCash et livraison.
 
-## État actuel
-La première livraison est un prototype frontend responsive. Les données affichées sont des exemples. L'ajout de produits est stocké localement dans le navigateur utilisé. Aucun compte marchand réel, stockage serveur, paiement réel ou dispatch de livreurs n'est activé.
+## Important — état réel
+Ce dépôt est un prototype de développement, pas une plateforme de commerce prête pour la production. Les produits de démonstration ne sont pas des offres réelles. Les formulaires ne créent pas de comptes, le panier ne passe pas de commande et aucun paiement MonCash/NatCash n'est connecté. Les règles SQL ne remplacent pas encore des fonctions serveur sécurisées pour la création des commandes et la validation des paiements.
 
-## Lancer
-Ouvrir `index.html` dans un navigateur, ou publier le dépôt avec GitHub Pages.
-
-## Prochaines étapes
-1. Authentification et comptes marchands.
-2. Base de données et gestion multi-boutiques.
-3. Catalogue et commandes persistants.
-4. Workflow d'activation à 750 GDS.
-5. Intégration officielle MonCash/NatCash après accès marchand et tests.
-6. Gestion réelle des livreurs et suivi de livraison.
+Ne publiez pas de clés secrètes, PIN, OTP ou mots de passe dans le dépôt. Les intégrations de paiement nécessitent des accès marchands et une validation officielle.
