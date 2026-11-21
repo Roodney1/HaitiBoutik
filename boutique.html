@@ -22,28 +22,6 @@ button{background:var(--accent);color:#17110c;border:0;border-radius:10px;paddin
 .cart{position:fixed;right:16px;bottom:16px;background:#242424;border:1px solid #555;border-radius:14px;padding:14px;width:min(340px,calc(100vw - 32px));box-shadow:0 8px 30px #0009;z-index:8}.cart-head{display:flex;justify-content:space-between;align-items:center}.cart-items{max-height:160px;overflow:auto;font-size:13px;color:#ddd;margin:10px 0}.cart-row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #3a3a3a}.cart-total{font-weight:900;color:var(--accent)}footer{border-top:1px solid var(--line);margin-top:35px;padding:20px 0;color:var(--muted);font-size:12px;line-height:1.7}
 @media(max-width:520px){.wrap{padding:16px 12px 90px}.hero{padding:21px}.photo{height:155px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:9px}.product h3{font-size:13px}.price{font-size:15px}.actions{flex-direction:column}.actions button,.actions a{width:100%}}
 
-/* HAITIBOUTIK GLOBAL THEME 5 — Noir Premium & Turquoise */
-:root{color-scheme:dark;--bg:#0b1114;--panel:#111b20;--panel2:#172329;--line:#26383e;--text:#edf7f6;--muted:#9bb0b2;--accent:#16c7b0;--accent2:#50e0cf;--green:#16c7b0}
-html{scroll-behavior:auto!important;background:#0b1114!important;scroll-padding-top:14px}
-body{background:#0b1114!important;color:#edf7f6!important}
-header,.top,.topbar,.navbar,.site-header{background:#101a1e!important;border-color:#26383e!important;color:#edf7f6!important}
-main,.main,.content{color:#edf7f6!important}
-h1,h2,h3,h4,strong,b,label{color:#edf7f6}
-p,small,.muted,.subtitle,.description{color:#a9bcbd}
-.card,.panel,.metric,.stat,.stat-card,.product-card,.auth-card,.form-card,.step-card,.summary,.notice,.admin-card,.delivery-card,.feature-card,.info-card,article{background:#111b20!important;color:#edf7f6!important;border:1px solid #26383e!important;box-shadow:none!important}
-.hero,.hero-card,.banner,.highlight{background:linear-gradient(125deg,#123b39,#10272a)!important;color:#f2fbfa!important;border:1px solid #1e5a54!important;box-shadow:none!important}
-.hero h1,.hero h2,.hero h3,.hero p,.hero-card h1,.hero-card h2,.hero-card p,.banner h1,.banner p{color:#f2fbfa!important}
-button,.button,.btn,a.button,.cta{background:#16c7b0!important;color:#06201d!important;border:1px solid #16c7b0!important;box-shadow:none!important}
-button:hover,.button:hover,.btn:hover,a.button:hover,.cta:hover{background:#50e0cf!important;color:#06201d!important}
-a{color:#50e0cf}
-input,select,textarea{background:#142126!important;color:#edf7f6!important;border:1px solid #345057!important}
-input::placeholder,textarea::placeholder{color:#82999b!important}
-hr{border-color:#26383e!important}
-.badge,.tag,.pill{background:#173c39!important;color:#5ce6d5!important}
-nav a:not(.button){color:#a9dcd6!important}
-footer{color:#9bb0b2!important;border-color:#26383e!important}
-img{max-width:100%}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -110,15 +88,5 @@ document.querySelector("#showCart").onclick=()=>document.querySelector("#cart").
 render();updateCart();
 </script>
 
-<script>
-/* HAITIBOUTIK_NAV_SCROLL_V1 — navigation fluide sans animation lourde */
-document.addEventListener("click",function(event){
- const link=event.target.closest('a[href^="#"]');
- if(!link)return;
- const id=link.getAttribute("href").slice(1);
- if(!id)return;
- const target=document.getElementById(decodeURIComponent(id));
- if(target){event.preventDefault();target.scrollIntoView({behavior:"auto",block:"start"});}
-});
-</script>
+
 </body></html>
