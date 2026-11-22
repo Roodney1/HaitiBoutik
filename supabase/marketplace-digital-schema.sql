@@ -1,4 +1,4 @@
--- HaitiBoutik Digital Marketplace — additive schema draft
+-- PDFMarket Digital Marketplace — additive schema draft
 -- Review before applying in Supabase SQL Editor. This does not replace the legacy physical-shop schema.
 -- Product files stay private. Only a trusted server may confirm payments, grant downloads,
 -- write seller balances, or issue signed download URLs.
