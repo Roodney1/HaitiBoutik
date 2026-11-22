@@ -1,10 +1,10 @@
-# HaitiBoutik — plan de construction
+# PDFMarket — plan de construction
 
 ## Décisions confirmées
 - Marché prioritaire : Haïti ; interface : français ; devise : GDS.
 - Type de plateforme : marketplace multi-vendeurs de produits numériques uniquement.
 - Les vendeurs paient un abonnement de **500 GDS par mois** pour vendre.
-- Commission HaitiBoutik : 20 % sur chaque vente payée ; part vendeur : 80 % avant frais éventuels du prestataire.
+- Commission PDFMarket : 20 % sur chaque vente payée ; part vendeur : 80 % avant frais éventuels du prestataire.
 - Les acheteurs paient sur le site et téléchargent après confirmation du paiement.
 - Pas de fournisseur physique, stock, coursier, livraison ou commande WhatsApp.
 
