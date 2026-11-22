@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101010"><meta name="description" content="Catalogue de démonstration HaitiBoutik : 30 produits populaires avec photos et prix indicatifs en gourdes haïtiennes.">
+<meta name="theme-color" content="#101010"><meta name="description" content="Catalogue de démonstration PDFMarket : 30 produits populaires avec photos et prix indicatifs en gourdes haïtiennes.">
 <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg">
-<title>Catalogue produits — HaitiBoutik</title>
+<title>Catalogue produits — PDFMarket</title>
 <style>
 :root{color-scheme:dark;--bg:#101010;--panel:#191919;--line:#303030;--muted:#aaa;--accent:#ff8a35;--green:#70d6a3}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f7f7f7;font:15px system-ui,-apple-system,Segoe UI,sans-serif}
@@ -25,7 +25,7 @@ button{background:var(--accent);color:#17110c;border:0;border-radius:10px;paddin
 </style>
 </head>
 <body>
-<header><a class="brand" href="index.html">Haiti<span>Boutik</span></a><a class="toplink" href="index.html">← Accueil HaitiBoutik</a></header>
+<header><a class="brand" href="index.html">Haiti<span>Boutik</span></a><a class="toplink" href="index.html">← Accueil PDFMarket</a></header>
 <main class="wrap">
 <section class="hero"><div class="eyebrow">CATALOGUE DE DÉMONSTRATION · HAÏTI</div><h1>Les produits qui attirent l'attention</h1><p class="muted">Découvrez une sélection de téléphones, accessoires, audio et produits utiles. Les prix sont affichés en gourdes haïtiennes (GDS) et peuvent varier selon le fournisseur, la qualité et la disponibilité.</p></section>
 <div class="tools"><input id="search" type="search" placeholder="Rechercher un produit…" aria-label="Rechercher un produit"><select id="sort" aria-label="Trier les produits"><option value="popular">Trier : sélection</option><option value="low">Prix croissant</option><option value="high">Prix décroissant</option><option value="az">Nom A à Z</option></select><button id="showCart">Panier (<span id="count">0</span>)</button></div>
@@ -34,8 +34,8 @@ button{background:var(--accent);color:#17110c;border:0;border-radius:10px;paddin
 </nav>
 <div class="meta"><strong id="resultCount">30 produits</strong><span class="muted">Prix indicatifs · GDS</span></div>
 <section class="grid" id="products" aria-live="polite"></section>
-<div class="notice"><strong>À savoir avant la mise en ligne :</strong> ce catalogue est une maquette avec des exemples de prix observés ou estimés à partir de références publiques du marché haïtien. Il ne confirme ni stock, ni fournisseur, ni garantie, ni autorisation de revente. Les photos des fiches marquées « réel » proviennent des pages exactes des produits chez HaitiSmart et Nuvoteq. Les autres photos BiZZY sont des annonces publiques de vendeurs. Ces images appartiennent à leurs marchands : obtenir leur autorisation avant réutilisation commerciale. Les stocks et prix ne sont pas confirmés par HaitiBoutik. Le panier est local à cette démonstration : aucune commande réelle ni paiement n'est transmis.</div>
-<footer>HaitiBoutik · Catalogue de démonstration. Références consultées : BiZZY, HaitiSmart et Nuvoteq. Les liens « Référence » ouvrent la fiche du produit concerné. Les prix doivent être reconfirmés auprès du fournisseur avant publication.</footer>
+<div class="notice"><strong>À savoir avant la mise en ligne :</strong> ce catalogue est une maquette avec des exemples de prix observés ou estimés à partir de références publiques du marché haïtien. Il ne confirme ni stock, ni fournisseur, ni garantie, ni autorisation de revente. Les photos des fiches marquées « réel » proviennent des pages exactes des produits chez HaitiSmart et Nuvoteq. Les autres photos BiZZY sont des annonces publiques de vendeurs. Ces images appartiennent à leurs marchands : obtenir leur autorisation avant réutilisation commerciale. Les stocks et prix ne sont pas confirmés par PDFMarket. Le panier est local à cette démonstration : aucune commande réelle ni paiement n'est transmis.</div>
+<footer>PDFMarket · Catalogue de démonstration. Références consultées : BiZZY, HaitiSmart et Nuvoteq. Les liens « Référence » ouvrent la fiche du produit concerné. Les prix doivent être reconfirmés auprès du fournisseur avant publication.</footer>
 </main>
 <aside class="cart" id="cart" hidden><div class="cart-head"><strong>Votre panier</strong><button class="secondary" id="closeCart">Fermer</button></div><div class="cart-items" id="items">Votre panier est vide.</div><div class="cart-total" id="total">Total : 0 GDS</div><p class="muted" style="font-size:11px">Démonstration uniquement — paiement et commande non activés.</p></aside>
 <script>
