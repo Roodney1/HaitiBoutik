@@ -5,7 +5,7 @@ Marketplace haïtien de produits numériques en construction.
 ## Modèle confirmé
 - Interface en français ; marché prioritaire : Haïti ; devise d'affichage : GDS.
 - Les acheteurs achètent des PDF, e-books, modèles et autres fichiers numériques.
-- Les vendeurs paient un abonnement mensuel pour publier et vendre.
+- Les vendeurs paient un abonnement de **500 GDS par mois** pour publier et vendre.
 - HaitiBoutik prélève 20 % sur chaque vente payée ; le vendeur reçoit 80 % avant les éventuels frais de paiement.
 - Après confirmation du paiement, l'acheteur obtient un accès sécurisé au téléchargement.
 - Aucun stock physique, fournisseur, coursier ou livraison physique.
