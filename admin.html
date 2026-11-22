@@ -1,37 +1,60 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171311"><title>HaitiBoutik — Administration</title>
 <style>
-:root{--bg:#171311;--panel:#241e1a;--line:#44352d;--text:#fff7f1;--muted:#b9aaa0;--orange:#f06b4f;--green:#65c99a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#39231c,#171311 55%);color:var(--text);font:14px Arial,sans-serif}.wrap{max-width:1150px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{font-size:21px;font-weight:800}.brand span{color:var(--orange)}.muted{color:var(--muted)}.pill{border:1px solid #77503e;border-radius:30px;padding:7px 11px;color:#ffc2a8;font-size:11px}.intro{margin:28px 0 18px}.intro h1{font-size:26px;margin:0 0 7px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card,.panel{background:linear-gradient(145deg,#2b2420,#211b18);border:1px solid var(--line);border-radius:13px;padding:17px}.card small{color:var(--muted)}.card strong{display:block;font-size:26px;margin:10px 0 4px}.zero{color:#ffc09e}.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:13px;margin-top:14px}.panel h2{font-size:15px;margin:0 0 13px}.item{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line);padding:12px 0;font-size:12px}.btn{border:0;border-radius:8px;padding:9px 12px;background:var(--orange);color:#27130e;font-weight:700;cursor:pointer}.btn.secondary{background:#382b24;color:#fce8dd;border:1px solid #594238}.notice{background:#33251e;border:1px solid #72503c;color:#f7c9ae;border-radius:10px;padding:12px;font-size:12px;line-height:1.6;margin-top:16px}.links{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.links a{color:#ffc09e;text-decoration:none;font-size:12px}.notifications{margin-top:14px}.notification{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-top:1px solid var(--line);padding:12px 0}.notification strong{display:block;font-size:12px}.notification p{margin:5px 0;color:var(--muted);font-size:12px;line-height:1.5}.notification small{color:#d2a48e;font-size:10px}.notification button{flex-shrink:0}.empty{color:var(--muted);font-size:12px;padding:12px 0}@media(max-width:750px){.grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}.wrap{padding:16px}.intro h1{font-size:22px}}
-
-</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="./supabase-client.js"></script><style>body{visibility:hidden}</style></head><body><main class="wrap"><header class="top"><div class="brand">Haiti<span>Boutik</span> <small class="muted">/ Administration</small></div><span class="pill">MODE DÉMONSTRATION</span></header>
-<section class="intro"><h1>Centre de contrôle</h1><div class="muted">Vue générale de la plateforme — les chiffres affichés sont des données réelles du prototype, pas des statistiques commerciales.</div></section>
-<section class="grid"><article class="card"><small>Boutiques enregistrées</small><strong class="zero">0</strong><small>Aucune boutique réelle connectée</small></article><article class="card"><small>Boutiques à vérifier</small><strong class="zero">0</strong><small>Demandes en attente</small></article><article class="card"><small>Paiements confirmés</small><strong class="zero">0 GDS</strong><small>Aucun paiement connecté</small></article><article class="card"><small>Commandes totales</small><strong class="zero">0</strong><small>Aucune commande réelle</small></article></section>
-<section class="cols"><article class="panel"><h2>Demandes d'activation</h2><div class="item"><span>Aucune demande pour le moment</span><span class="pill">0 demande</span></div><div class="item"><span>Frais d'activation prévus</span><b>750 GDS / une seule fois</b></div><div class="item"><span>Validation du paiement</span><span class="muted">Manuelle pour le moment</span></div></article>
-<article class="panel"><h2>Actions administrateur</h2><div class="item"><span>Examiner les boutiques</span><button class="btn secondary" onclick="alert('La gestion réelle des boutiques sera activée après connexion à la base de données.')">Ouvrir</button></div><div class="item"><span>Consulter les paiements</span><button class="btn secondary" onclick="alert('Aucun fournisseur de paiement n’est encore connecté.')">Ouvrir</button></div><div class="item"><span>Paramètres plateforme</span><button class="btn secondary" onclick="alert('Les paramètres serveur seront configurés dans la prochaine étape.')">Ouvrir</button></div></article></section>
-<section class="panel notifications"><h2>Notifications administrateur</h2><div id="adminNotifications"><p class="empty">Chargement des notifications…</p></div></section>
-<div class="notice"><b>Important :</b> cette page est une maquette d'interface. Elle ne possède pas encore de connexion administrateur sécurisée. Ne l'utilisez pas pour accepter des paiements ou gérer de vrais comptes. Un vrai panneau admin devra être protégé par authentification et droits d'accès côté serveur.</div>
-<nav class="links"><a href="index.html">← Espace marchand</a><a href="boutique.html">Vitrine boutique</a><a href="livraison.html">Gestion des livraisons →</a></nav></main>
-
-
-<script>(async()=>{const client=window.haitiBoutikSupabase;if(!client){location.replace('connexion.html?next=admin.html');return;}const {data:{session}}=await client.auth.getSession();if(!session){location.replace('connexion.html?next=admin.html');return;}if(session.user?.app_metadata?.role!=='admin'){location.replace('espace-marchand.html');return;}document.body.style.visibility='visible';
-const notificationsEl=document.getElementById('adminNotifications');
-async function loadAdminNotifications(){
- if(!notificationsEl)return;
- const {data,error}=await client.from('admin_notifications').select('id,title,message,created_at,read_at').order('created_at',{ascending:false}).limit(30);
- notificationsEl.replaceChildren();
- if(error){const p=document.createElement('p');p.className='empty';p.textContent='Impossible de charger les notifications : '+error.message;notificationsEl.appendChild(p);return;}
- if(!data?.length){const p=document.createElement('p');p.className='empty';p.textContent='Aucun paiement d’activation confirmé pour le moment.';notificationsEl.appendChild(p);return;}
- data.forEach(n=>{
-  const row=document.createElement('div');row.className='notification';
-  const body=document.createElement('div');const title=document.createElement('strong');title.textContent=n.title;
-  const msg=document.createElement('p');msg.textContent=n.message;
-  const date=document.createElement('small');date.textContent=new Date(n.created_at).toLocaleString('fr-FR');
-  body.append(title,msg,date);row.appendChild(body);
-  if(!n.read_at){const b=document.createElement('button');b.className='btn secondary';b.textContent='Marquer comme lu';b.onclick=async()=>{const {error:updateError}=await client.from('admin_notifications').update({read_at:new Date().toISOString()}).eq('id',n.id);if(updateError){alert('Impossible de marquer comme lu : '+updateError.message);return;}loadAdminNotifications();};row.appendChild(b);}
-  notificationsEl.appendChild(row);
- });
-}
-await loadAdminNotifications();
-const notificationChannel=client.channel('admin-activation-notifications').on('postgres_changes',{event:'INSERT',schema:'public',table:'admin_notifications'},()=>loadAdminNotifications()).subscribe();
-const header=document.querySelector('.top');const btn=document.createElement('button');btn.className='btn secondary';btn.textContent='Déconnexion';btn.onclick=async()=>{await client.auth.signOut();location.replace('connexion.html');};header.appendChild(btn);})();</script>
-</body></html>
+:root{--bg:#171311;--panel:#241e1a;--line:#44352d;--text:#fff7f1;--muted:#b9aaa0;--orange:#f06b4f;--green:#65c99a;--red:#ff9d8d}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#39231c,#171311 55%);color:var(--text);font:14px Arial,sans-serif}.wrap{max-width:1100px;margin:auto;padding:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{font-size:21px;font-weight:800}.brand span{color:var(--orange)}.muted,.hint{color:var(--muted)}.pill{border:1px solid #77503e;border-radius:30px;padding:7px 11px;color:#ffc2a8;font-size:11px}.intro{margin:25px 0 16px}.intro h1{font-size:25px;margin:0 0 7px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card,.panel{background:linear-gradient(145deg,#2b2420,#211b18);border:1px solid var(--line);border-radius:13px;padding:16px}.card small{color:var(--muted)}.card strong{display:block;font-size:25px;margin:9px 0}.panel{margin-top:14px}.panel h2{font-size:16px;margin:0 0 12px}.payment{border-top:1px solid var(--line);padding:15px 0;display:grid;grid-template-columns:1fr auto;gap:12px}.payment:first-child{border-top:0}.payment h3{margin:0 0 6px;font-size:15px}.payment p{margin:5px 0;color:var(--muted);font-size:12px;line-height:1.5}.proof{display:inline-block;color:#ffc09e;margin-top:7px}.btn{border:0;border-radius:8px;padding:10px 13px;background:var(--orange);color:#27130e;font-weight:700;cursor:pointer}.btn.secondary{background:#382b24;color:#fce8dd;border:1px solid #594238}.btn:disabled{opacity:.5;cursor:wait}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.empty{color:var(--muted);font-size:13px;padding:12px 0}.notice{background:#33251e;border:1px solid #72503c;color:#f7c9ae;border-radius:10px;padding:12px;font-size:12px;line-height:1.6;margin-top:15px}.error{color:var(--red);font-size:12px}.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.links a{color:#ffc09e;text-decoration:none;font-size:12px}@media(max-width:650px){.wrap{padding:14px}.grid{grid-template-columns:1fr}.payment{grid-template-columns:1fr}.intro h1{font-size:22px}}
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="./supabase-client.js"></script><style>body{visibility:hidden}</style></head>
+<body><main class="wrap"><header class="top"><div class="brand">Haiti<span>Boutik</span> <small class="muted">/ Administration</small></div><button id="logout" class="btn secondary">Déconnexion</button></header>
+<section class="intro"><h1>Vérification des paiements</h1><div class="muted">Examinez les reçus NatCash. La boutique ne s’active qu’après confirmation réelle de la transaction dans le compte NatCash destinataire.</div></section>
+<section class="grid"><article class="card"><small>Boutiques en attente</small><strong id="pendingShops">—</strong></article><article class="card"><small>Reçus à examiner</small><strong id="pendingPayments">—</strong></article><article class="card"><small>Paiements confirmés</small><strong id="verifiedPayments">— GDS</strong></article></section>
+<section class="panel"><h2>Reçus à vérifier</h2><div id="payments"><p class="empty">Chargement des demandes…</p></div><p id="pageError" class="error"></p></section>
+<div class="notice"><b>Règle de sécurité :</b> une image ou une référence ne suffit pas à prouver le paiement. Ouvrez votre compte NatCash officiel et confirmez que 750 GDS ont bien été reçus pour cette transaction avant de cliquer sur « Confirmer et activer ». Ne partagez jamais de PIN ni de code OTP.</div>
+<nav class="links"><a href="index.html">← Accueil</a><a href="creer-boutique.html">Création de boutique</a><a href="espace-marchand.html">Espace marchand</a></nav></main>
+<script>
+(async()=>{
+ const client=window.haitiBoutikSupabase;
+ if(!client){location.replace('connexion.html?next=admin.html');return;}
+ const {data:{session}}=await client.auth.getSession();
+ if(!session){location.replace('connexion.html?next=admin.html');return;}
+ if(session.user?.app_metadata?.role!=='admin'){location.replace('espace-marchand.html');return;}
+ document.body.style.visibility='visible';
+ document.getElementById('logout').onclick=async()=>{await client.auth.signOut();location.replace('connexion.html');};
+ const el=document.getElementById('payments');
+ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ async function load(){
+  el.innerHTML='<p class="empty">Chargement…</p>';document.getElementById('pageError').textContent='';
+  const [payRes,shopRes,verifiedRes,pendingShopRes]=await Promise.all([
+   client.from('payment_records').select('id,shop_id,amount_gds,method,provider_reference,proof_path,submitted_at,created_at').eq('purpose','shop_activation').eq('status','submitted').order('submitted_at',{ascending:true}),
+   client.from('shops').select('id,name,slug,owner_id,city,contact_phone').eq('status','pending_activation'),
+   client.from('payment_records').select('amount_gds').eq('purpose','shop_activation').eq('status','verified'),
+   client.from('shops').select('id',{count:'exact',head:true}).eq('status','pending_activation')
+  ]);
+  if(payRes.error){el.innerHTML='';document.getElementById('pageError').textContent='Erreur de chargement : '+payRes.error.message;return;}
+  const payments=payRes.data||[], shops=shopRes.data||[];
+  document.getElementById('pendingShops').textContent=pendingShopRes.count??shops.length;
+  document.getElementById('pendingPayments').textContent=payments.length;
+  document.getElementById('verifiedPayments').textContent=(verifiedRes.data||[]).reduce((a,p)=>a+Number(p.amount_gds||0),0)+' GDS';
+  if(!payments.length){el.innerHTML='<p class="empty">Aucun reçu en attente.</p>';return;}
+  const byId=new Map(shops.map(s=>[s.id,s]));
+  el.replaceChildren();
+  for(const p of payments){
+   const shop=byId.get(p.shop_id);
+   const row=document.createElement('article');row.className='payment';
+   const info=document.createElement('div');
+   const title=document.createElement('h3');title.textContent=shop?.name||'Boutique '+p.shop_id.slice(0,8);
+   const details=document.createElement('p');details.textContent='Montant : '+p.amount_gds+' GDS · Méthode : NatCash · Envoyé le : '+new Date(p.submitted_at||p.created_at).toLocaleString('fr-FR')+(p.provider_reference?' · Référence : '+p.provider_reference:'');
+   const contact=document.createElement('p');contact.textContent='Ville : '+(shop?.city||'Non précisée')+' · Téléphone boutique : '+(shop?.contact_phone||'Non précisé');
+   const proof=document.createElement('a');proof.className='proof';proof.textContent='Ouvrir le reçu sécurisé';proof.target='_blank';proof.rel='noopener';
+   const signed=await client.storage.from('activation-proofs').createSignedUrl(p.proof_path,180);
+   if(!signed.error&&signed.data?.signedUrl)proof.href=signed.data.signedUrl;else{proof.removeAttribute('href');proof.textContent='Reçu inaccessible : '+(signed.error?.message||'erreur');}
+   info.append(title,details,contact,proof);
+   const actions=document.createElement('div');actions.className='actions';
+   const approve=document.createElement('button');approve.className='btn';approve.textContent='Confirmer et activer';
+   const reject=document.createElement('button');reject.className='btn secondary';reject.textContent='Refuser';
+   async function review(decision,button){if(!confirm(decision==='verify'?'Confirmez-vous avoir vérifié la réception réelle de 750 GDS sur NatCash ?':'Refuser ce reçu ?'))return;approve.disabled=true;reject.disabled=true;button.textContent='Traitement…';const {error}=await client.rpc('review_shop_activation_payment',{p_payment_id:p.id,p_decision:decision});if(error){document.getElementById('pageError').textContent=error.message;approve.disabled=false;reject.disabled=false;button.textContent=decision==='verify'?'Confirmer et activer':'Refuser';return;}await load();}
+   approve.onclick=()=>review('verify',approve);reject.onclick=()=>review('reject',reject);actions.append(approve,reject);row.append(info,actions);el.append(row);
+  }
+ }
+ await load();
+ const channel=client.channel('admin-payment-review').on('postgres_changes',{event:'*',schema:'public',table:'payment_records'},()=>load()).subscribe();
+})();
+</script></body></html>
