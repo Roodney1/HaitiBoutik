@@ -1,7 +1,7 @@
 {
-  "name": "HaitiBoutik",
-  "short_name": "HaitiBoutik",
-  "description": "Espace marchand et vitrine de commerce en Haïti.",
+  "name": "PDFMarket",
+  "short_name": "PDFMarket",
+  "description": "Marketplace de produits numériques en Haïti.",
   "lang": "fr",
   "start_url": "./index.html",
   "scope": "./",
