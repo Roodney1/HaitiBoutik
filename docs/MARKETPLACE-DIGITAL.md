@@ -3,7 +3,7 @@
 ## Décisions confirmées
 - Produit : marketplace multi-vendeurs de produits numériques uniquement.
 - Langue : français ; marché prioritaire : Haïti ; devise d'affichage : GDS.
-- Un vendeur paie un abonnement mensuel pour publier et vendre.
+- Un vendeur paie un abonnement de **500 GDS par mois** pour publier et vendre.
 - Commission de la plateforme : 20 % de chaque vente payée.
 - Part vendeur : 80 % du montant de vente, avant les éventuels frais du prestataire de paiement.
 - Les acheteurs paient sur le site et téléchargent leurs fichiers après confirmation du paiement.
