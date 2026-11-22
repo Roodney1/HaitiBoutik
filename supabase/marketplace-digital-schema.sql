@@ -178,19 +178,14 @@ drop policy if exists "public reads published digital products" on public.digita
 create policy "public reads published digital products" on public.digital_products
 for select to anon, authenticated using (status = 'published');
 drop policy if exists "seller manages own digital products with active subscription" on public.digital_products;
-create policy "seller manages own digital products with active subscription" on public.digital_products
-for all to authenticated using (
+drop policy if exists "seller reads own digital products" on public.digital_products;
+create policy "seller reads own digital products" on public.digital_products
+for select to authenticated using (seller_id = (select auth.uid()));
+drop policy if exists "seller creates draft digital products" on public.digital_products;
+create policy "seller creates draft digital products" on public.digital_products
+for insert to authenticated with check (
   seller_id = (select auth.uid())
-  and exists (
-    select 1 from public.seller_accounts sa
-    where sa.user_id = (select auth.uid()) and sa.status = 'active'
-  )
-  and exists (
-    select 1 from public.seller_subscriptions ss
-    where ss.seller_id = (select auth.uid()) and ss.status = 'active' and ss.ends_at > now()
-  )
-) with check (
-  seller_id = (select auth.uid())
+  and status in ('draft','pending_review')
   and exists (
     select 1 from public.seller_accounts sa
     where sa.user_id = (select auth.uid()) and sa.status = 'active'
@@ -200,6 +195,24 @@ for all to authenticated using (
     where ss.seller_id = (select auth.uid()) and ss.status = 'active' and ss.ends_at > now()
   )
 );
+drop policy if exists "seller updates own draft digital products" on public.digital_products;
+create policy "seller updates own draft digital products" on public.digital_products
+for update to authenticated using (seller_id = (select auth.uid()))
+with check (
+  seller_id = (select auth.uid())
+  and status in ('draft','pending_review')
+  and exists (
+    select 1 from public.seller_accounts sa
+    where sa.user_id = (select auth.uid()) and sa.status = 'active'
+  )
+  and exists (
+    select 1 from public.seller_subscriptions ss
+    where ss.seller_id = (select auth.uid()) and ss.status = 'active' and ss.ends_at > now()
+  )
+);
+drop policy if exists "seller deletes own digital products" on public.digital_products;
+create policy "seller deletes own digital products" on public.digital_products
+for delete to authenticated using (seller_id = (select auth.uid()));
 drop policy if exists "admin manages digital products" on public.digital_products;
 create policy "admin manages digital products" on public.digital_products
 for all to authenticated using (
@@ -268,11 +281,7 @@ for all to authenticated using (
 drop policy if exists "seller reads own payout requests" on public.seller_payouts;
 create policy "seller reads own payout requests" on public.seller_payouts
 for select to authenticated using (seller_id = (select auth.uid()));
-drop policy if exists "seller requests own payout" on public.seller_payouts;
-create policy "seller requests own payout" on public.seller_payouts
-for insert to authenticated with check (
-  seller_id = (select auth.uid()) and status = 'requested'
-);
+-- Payout requests are created by trusted server code after balance verification.
 drop policy if exists "admin manages seller payouts" on public.seller_payouts;
 create policy "admin manages seller payouts" on public.seller_payouts
 for all to authenticated using (
