@@ -141,14 +141,14 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { wind
   client.channel('merchant-orders-'+shop.id).on('postgres_changes',{event:'INSERT',schema:'public',table:'orders',filter:'shop_id=eq.'+shop.id},()=>{notify('Nouvelle commande reçue.');loadOrders();}).subscribe();
  }
  async function loadOrders(){
-  const {data,error}=await client.from('orders').select('id,customer_name,customer_phone,delivery_address,status,total_gds,created_at').eq('shop_id',shop.id).order('created_at',{ascending:false});
+  const {data,error}=await client.from('orders').select('id,customer_name,customer_phone,delivery_address,status,total_gds,payment_method,payment_status,created_at').eq('shop_id',shop.id).order('created_at',{ascending:false});
   const view=document.getElementById('orders');if(!view)return;
   updateDashboardStats(data||[]);
   let panel=document.getElementById('supabaseOrdersPanel');if(!panel){panel=document.createElement('article');panel.id='supabaseOrdersPanel';panel.className='panel';panel.innerHTML='<h3>Commandes reçues</h3><div id="supabaseOrderList"></div>';view.appendChild(panel);}
   const list=document.getElementById('supabaseOrderList');list.replaceChildren();
   if(error){list.textContent='Impossible de charger les commandes : '+error.message;return;}
   if(!data?.length){list.textContent='Aucune commande réelle reçue pour le moment.';return;}
-  data.forEach(order=>{const row=document.createElement('div');row.className='product-row';const info=document.createElement('div');const strong=document.createElement('strong');strong.textContent='Commande '+order.id.slice(0,8)+' · '+order.status;const small=document.createElement('small');small.textContent=order.customer_name+' · '+order.customer_phone+' · '+Number(order.total_gds).toLocaleString('fr-FR')+' GDS · '+order.delivery_address;info.append(strong,small);row.appendChild(info);list.appendChild(row);});
+  data.forEach(order=>{const row=document.createElement('div');row.className='product-row';const info=document.createElement('div');const strong=document.createElement('strong');strong.textContent='Commande '+order.id.slice(0,8)+' · '+order.status;const small=document.createElement('small');const methods={moncash:'MonCash',natcash:'NatCash',cash:'Espèces',cash_on_delivery:'Paiement à la livraison'};const paymentStates={pending:'À confirmer',awaiting_confirmation:'Transfert à vérifier',confirmed:'Payé',failed:'Échec'};small.textContent=order.customer_name+' · '+order.customer_phone+' · '+Number(order.total_gds).toLocaleString('fr-FR')+' GDS · '+order.delivery_address+' · Paiement : '+(methods[order.payment_method]||order.payment_method)+' ('+(paymentStates[order.payment_status]||order.payment_status)+')';info.append(strong,small);row.appendChild(info);list.appendChild(row);});
  }
  function updateDashboardStats(data){
   const now=new Date(),dayStart=new Date(now.getFullYear(),now.getMonth(),now.getDate()),weekStart=new Date(dayStart),monthStart=new Date(now.getFullYear(),now.getMonth(),1);
