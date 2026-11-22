@@ -1,4 +1,4 @@
-# HaitiBoutik — marketplace de produits numériques
+# PDFMarket — marketplace de produits numériques
 
 ## Décisions confirmées
 - Produit : marketplace multi-vendeurs de produits numériques uniquement.
