@@ -28,6 +28,11 @@ create table if not exists public.seller_subscriptions (
 create index if not exists seller_subscriptions_active_idx
   on public.seller_subscriptions(seller_id, ends_at desc) where status = 'active';
 
+-- The paid period is one calendar month; renewals create a new subscription row.
+alter table public.seller_subscriptions drop constraint if exists seller_subscription_one_month;
+alter table public.seller_subscriptions add constraint seller_subscription_one_month
+  check (status <> 'active' or ends_at <= starts_at + interval '1 month');
+
 create table if not exists public.digital_products (
   id uuid primary key default gen_random_uuid(),
   seller_id uuid not null references public.seller_accounts(user_id) on delete cascade,
@@ -316,6 +321,15 @@ for insert to authenticated with check (
   and exists (
     select 1 from public.seller_subscriptions ss
     where ss.seller_id = (select auth.uid()) and ss.status = 'active' and ss.ends_at > now()
+  )
+);
+drop policy if exists "admin reads digital product files" on storage.objects;
+create policy "admin reads digital product files" on storage.objects
+for select to authenticated using (
+  bucket_id = 'digital-products'
+  and exists (
+    select 1 from public.profiles p
+    where p.id = (select auth.uid()) and p.role = 'admin'
   )
 );
 drop policy if exists "seller reads own digital product files" on storage.objects;
