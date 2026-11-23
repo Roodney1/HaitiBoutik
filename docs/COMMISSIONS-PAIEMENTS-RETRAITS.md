@@ -3,7 +3,7 @@
 ## Ajout livré dans cette branche
 - `finances.html` : tableau de bord réservé à l'administrateur, soldes en GDS, historique des commissions et demandes de retrait NatCash.
 - `20261123_commissions_and_natcash_payouts.sql` : tables, calcul de commission et RPC de demande de retrait.
-- Commission de plateforme prévue : 5 % du montant des produits, plafonnée à la marge restante après coût fournisseur.
+- Commission de plateforme prévue : 10 % du montant des produits, plafonnée à la marge restante après coût fournisseur.
 - Une commission n'est comptabilisée que si la commande est livrée ET qu'un paiement client est marqué vérifié.
 - Le retrait crée une demande; aucun transfert NatCash automatique n'est simulé.
 
