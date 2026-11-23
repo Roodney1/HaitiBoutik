@@ -17,7 +17,7 @@ create table if not exists public.platform_commissions (
   order_id uuid not null unique references public.orders(id) on delete restrict,
   gross_gds numeric(12,2) not null check (gross_gds >= 0),
   supplier_cost_gds numeric(12,2) not null check (supplier_cost_gds >= 0),
-  commission_rate numeric(5,2) not null default 5.00 check (commission_rate between 0 and 20),
+  commission_rate numeric(5,2) not null default 10.00 check (commission_rate between 0 and 20),
   commission_gds numeric(12,2) not null check (commission_gds >= 0),
   currency text not null default 'GDS' check (currency='GDS'),
   created_at timestamptz not null default now()
@@ -79,10 +79,10 @@ begin
   left join public.supplier_catalog sc on sc.id=p.supplier_catalog_id
   where oi.order_id=p_order_id;
 
-  v_fee := greatest(0, least(v_gross-v_cost, round(v_gross*0.05,2)));
+  v_fee := greatest(0, least(v_gross-v_cost, round(v_gross*0.10,2)));
 
   insert into public.platform_commissions(order_id,gross_gds,supplier_cost_gds,commission_rate,commission_gds)
-  values(p_order_id,v_gross,v_cost,5.00,v_fee)
+  values(p_order_id,v_gross,v_cost,10.00,v_fee)
   on conflict(order_id) do update set
     gross_gds=excluded.gross_gds,
     supplier_cost_gds=excluded.supplier_cost_gds,
@@ -147,7 +147,7 @@ begin
   select coalesce(sum(commission_gds),0) into v_available
   from public.platform_commissions;
   select coalesce(sum(amount_gds),0) into v_reserved
-  from public.platform_payout_requests where status in ('requested','approved');
+  from public.platform_payout_requests where status in ('requested','approved','paid');
   if p_amount_gds > v_available-v_reserved then raise exception 'Solde disponible insuffisant.'; end if;
 
   insert into public.platform_payout_requests(amount_gds,destination_phone,requested_by)
