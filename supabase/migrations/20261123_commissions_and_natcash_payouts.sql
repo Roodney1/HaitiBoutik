@@ -70,7 +70,11 @@ begin
       where pr.order_id=o.id and pr.purpose='customer_order' and pr.status='verified'
     );
 
-  if not found then return; end if;
+  if not found then
+    -- Retirer toute commission si la commande n'est plus livrée ou si le paiement est invalidé.
+    delete from public.platform_commissions where order_id=p_order_id;
+    return;
+  end if;
 
   select coalesce(sum(sc.supplier_price_gds * oi.quantity),0)
   into v_cost
