@@ -91,8 +91,8 @@ function updateCart(){
  document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{cart=cart.filter(x=>x.id!==Number(b.dataset.remove));updateCart();});
  const order=document.querySelector("#whatsappOrder");
  if(!cart.length){order.href="#";order.style.opacity=".5";order.style.pointerEvents="none";return;}
- const lines=cart.map(p=>'• '+p.name+' | Quantité : '+p.qty+' | Prix unitaire : '+money(p.price)+' | Sous-total : '+money(p.price*p.qty)+'\\nPhoto : '+p.img);
- const message='Bonjour HaitiBoutik, je souhaite commander :\\n\\n'+lines.join('\\n\\n')+'\\n\\nTOTAL INDICATIF : '+money(total)+'\\nMerci de confirmer la disponibilité et la livraison.';
+ const lines=cart.map(p=>'• '+p.name+' | Quantité : '+p.qty+' | Prix unitaire : '+money(p.price)+' | Sous-total : '+money(p.price*p.qty)+'\nPhoto : '+p.img);
+ const message='Bonjour HaitiBoutik, je souhaite commander :\n\n'+lines.join('\n\n')+'\n\nTOTAL INDICATIF : '+money(total)+'\nMerci de confirmer la disponibilité et la livraison.';
  order.href='https://wa.me/50943449848?text='+encodeURIComponent(message);
  order.style.opacity="1";order.style.pointerEvents="auto";
 }
